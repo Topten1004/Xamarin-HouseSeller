@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "51749255485",
+    "project_id": "immowert4you-b04be",
+    "storage_bucket": "immowert4you-b04be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51749255485:android:06de9be54e411a898a6d54",
+        "android_client_info": {
+          "package_name": "com.billogstudio.immowert4you"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51749255485-7tjtuddontl0v9v61lfu159ukvtg0sgf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe3F-hZri2iNtY-PNG_lup-rUKXUbeyiY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51749255485-7tjtuddontl0v9v61lfu159ukvtg0sgf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

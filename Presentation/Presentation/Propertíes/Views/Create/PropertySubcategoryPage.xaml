@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<bases:BaseContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:bases="clr-namespace:Immowert4You.Presentation.Common.Bases.Views"
+    x:Class="Immowert4You.Presentation.Properties.Views.Create.PropertySubcategoryPage"
+    xmlns:components="clr-namespace:Immowert4You.Presentation.Common.Components"
+    BackgroundColor="{StaticResource ColorBackground}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style
+                TargetType="ImageButton"
+                x:Key="image_bttn">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="Transparent" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="43" />
+                <Setter
+                    Property="Margin"
+                    Value="-14,0,10,0" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Start" />
+                <Setter
+                    Property="Grid.Column"
+                    Value="1" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentView
+        ControlTemplate="{StaticResource DismissiblePage}">
+        <StackLayout>
+            <ListView
+                x:Name="list"
+                VerticalOptions="CenterAndExpand"
+                ItemsSource="{Binding Subcategories}"
+                SelectedItem="{Binding SelectedSubcategory}"
+                HasUnevenRows="True"
+                VerticalScrollBarVisibility="Never"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell
+                            Tapped="ViewCell_Tapped">
+                            <StackLayout
+                                Margin="-1">
+                                <Frame
+                                    Style="{StaticResource frm1}"
+                                    Margin="10,15"
+                                    x:Name="frm"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="{StaticResource ColorGrayLight1}"
+                                    VerticalOptions="FillAndExpand"
+                                    HeightRequest="70"
+                                    CornerRadius="36">
+                                    <StackLayout
+                                        x:Name="stack"
+                                        Orientation="Horizontal">
+                                        <ImageButton
+                                            x:Name="icon"
+                                            Source="{Binding Icon}"
+                                            HeightRequest="60"
+                                            WidthRequest="60"
+                                            CornerRadius="30"
+                                            Margin="-13,0,5,0"
+                                            BorderColor="{StaticResource ColorGrayLight1}"
+                                            BorderWidth="1"
+                                            Style="{StaticResource image_bttn}" />
+                                        <Label
+                                            x:Name="label"
+                                            Text="{Binding Name}"
+                                            FontSize="15"
+                                            Style="{StaticResource entry_frm}"
+                                            TextColor="{StaticResource ColorGrayDark}"
+                                            HorizontalOptions="StartAndExpand" />
+                                        <Image
+                                            x:Name="image"
+                                            Margin="0,15"
+                                            Source="circle_empty" />
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button
+                IsVisible="{Binding SelectedSubcategory,Converter={StaticResource NullToBooleanConverter}}"
+                VerticalOptions="CenterAndExpand"
+                Style="{StaticResource bttnSmallBlue}"
+                Text="WEITER"
+                Margin="0,20"
+                Command="{Binding NavigateToHouseCondition}" />
+        </StackLayout>
+  </ContentView>
+</bases:BaseContentPage>

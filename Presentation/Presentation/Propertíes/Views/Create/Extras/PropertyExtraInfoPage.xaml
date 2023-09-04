@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<bases:BaseContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:bases="clr-namespace:Immowert4You.Presentation.Common.Bases.Views"
+    x:Class="Immowert4You.Presentation.Properties.Views.Extras.PropertyExtraInfoPage"
+    xmlns:components="clr-namespace:Immowert4You.Presentation.Common.Components"
+    xmlns:extras="clr-namespace:Immowert4You.Presentation.Properties.Models.Create.Extras"
+    x:DataType="extras:PropertyExtraInfoViewModel"
+    Title="{Binding Header}"
+    BackgroundColor="{StaticResource ColorBackground}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:Array
+                Type="{x:Type x:String}"
+                x:Key="Fuels">
+                <x:String>Keine Heizung</x:String>
+                <x:String>Ölheizung</x:String>
+                <x:String>Feste Brennstoffe</x:String>
+                <x:String>Gasheizung</x:String>
+                <x:String>Fernwärme</x:String>
+                <x:String>Wärmepumpe</x:String>
+                <x:String>Kachelofen</x:String>
+                <x:String>Elektroheizung</x:String>
+                <x:String>Einzelofenheizung</x:String>
+                <x:String>Pelletsheizung</x:String>
+            </x:Array>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentView
+        ControlTemplate="{StaticResource DismissiblePage}">
+      <StackLayout>
+            <StackLayout>
+                <Frame
+                    Style="{StaticResource frm1}">
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            Text="Energieausweis vorhanden"
+                            HorizontalOptions="FillAndExpand"
+                            TextColor="{StaticResource ColorGray}"
+                            Style="{StaticResource entry_frm}" />
+                        <Switch
+                            IsToggled="{Binding Property.HasEnergyCertificate}"
+                            x:Name="energySwitch" />
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    IsVisible="{Binding Source={x:Reference energySwitch}, Path=IsToggled}"
+                    Style="{StaticResource frm1}">
+                    <StackLayout
+                        Spacing="0">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                Text="HWB"
+                                HorizontalOptions="StartAndExpand"
+                                TextColor="{StaticResource ColorGray}"
+                                Style="{StaticResource entry_frm}" />
+                            <components:CustomEntry
+                                MaxLength="6"
+                                Keyboard="Numeric"
+                                HorizontalTextAlignment="End"
+                                WidthRequest="64"
+                                Margin="0,0,-5,0"
+                                Text="{Binding Property.HeatingCosts}"
+                                PlaceholderColor="{StaticResource ColorGrayLight}"
+                                Style="{StaticResource entry_frm}"
+                                HorizontalOptions="Fill" >
+                                <components:CustomEntry.HideBottomLine>
+                                    <OnPlatform x:TypeArguments="x:Boolean" iOS="True" Android="False"/>
+                                </components:CustomEntry.HideBottomLine>
+                            </components:CustomEntry>
+                            <Label
+                                Text="kWh/m²a"
+                                HorizontalOptions="End"
+                                TextColor="{StaticResource ColorGray}"
+                                Style="{StaticResource entry_frm}" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    Style="{StaticResource frm1}">
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            Text="Heizungsart"
+                            HorizontalOptions="Start"
+                            TextColor="{StaticResource ColorGray}"
+                            Style="{StaticResource entry_frm}" />
+                        <Picker
+                            HorizontalTextAlignment="Center"
+                            SelectedIndex="0"
+                            SelectedItem="{Binding Property.HeatingSystem}"
+                            WidthRequest="140"
+                            ItemsSource="{StaticResource Fuels}"
+                            Style="{StaticResource entry_frm}"
+                            HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <StackLayout>
+                <Frame
+                    Style="{StaticResource frm1}">
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            Text="Förderung offen"
+                            HorizontalOptions="Start"
+                            TextColor="{StaticResource ColorGray}"
+                            Style="{StaticResource entry_frm}" />
+                        <Switch
+                            IsToggled="{Binding Property.IsOpenOffert}"
+                            HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <StackLayout>
+                <Frame
+                    IsVisible="{Binding IsFlat}"
+                    Style="{StaticResource frm1}">
+                    <StackLayout
+                        Spacing="0">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                Text="Betriebskosten"
+                                HorizontalOptions="StartAndExpand"
+                                TextColor="{StaticResource ColorGray}"
+                                Style="{StaticResource entry_frm}" />
+                            <components:CustomEntry
+                                MaxLength="10"
+                                Keyboard="Numeric"
+                                HorizontalTextAlignment="End"
+                                WidthRequest="64"
+                                Margin="0,0,-5,0"
+                                PlaceholderColor="{StaticResource ColorGrayLight}"
+                                Style="{StaticResource entry_frm}"
+                                Text="{Binding Property.MonthlyCosts}"
+                                HorizontalOptions="Fill" >
+                                <components:CustomEntry.HideBottomLine>
+                                    <OnPlatform x:TypeArguments="x:Boolean" iOS="True" Android="False"/>
+                                </components:CustomEntry.HideBottomLine>
+                            </components:CustomEntry>
+                            <Label
+                                Text="€/Monat"
+                                HorizontalOptions="End"
+                                TextColor="{StaticResource ColorGray}"
+                                Style="{StaticResource entry_frm}" />
+                        </StackLayout>
+                        <Label
+                            Margin="0,-10,0,0"
+                            Text="Wasser, Kanal, Grundsteuer, Müll, Versicherung, Verwaltung"
+                            FontSize="8" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <Label
+                IsVisible="{Binding IsHouse}"
+                Margin="0,20,0,0"
+                FontSize="16"
+                HorizontalOptions="CenterAndExpand"
+                Text="Hat das Haus Besonderheiten?" />
+            <Label
+                IsVisible="{Binding IsFlat}"
+                Margin="0,20,0,0"
+                FontSize="16"
+                HorizontalOptions="CenterAndExpand"
+                Text="Hat die Wohnung Besonderheiten?" />
+            <Editor
+                HeightRequest="100"
+                Keyboard="Chat"
+                Text="{Binding Property.Extras}"
+                PlaceholderColor="LightGray"
+                Placeholder="Weitblick, Seeblick, Alleinlage oder sonstige Besonderheiten."/>
+            <Button
+                Margin="0,0,0,20"
+                Style="{StaticResource bttnSmallBlue}"
+                Text="ABSCHICKEN UND BEENDEN"
+                Command="{Binding NavigateToSaveAndQuitModalPage}" 
+                VerticalOptions="EndAndExpand"/>
+        </StackLayout>
+  </ContentView>
+</bases:BaseContentPage>

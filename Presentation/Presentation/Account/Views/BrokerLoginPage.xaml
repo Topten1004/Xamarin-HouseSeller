@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:components="clr-namespace:Immowert4You.Presentation.Common.Components"
+    x:Class="Immowert4You.Presentation.Login.Views.BrokerLoginPage"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="{StaticResource ColorBackground}">
+    <ContentView
+        ControlTemplate="{StaticResource LoadingIndicatorPage}">
+        <StackLayout
+            Padding="0">
+            <StackLayout
+                Orientation="Horizontal">
+                <StackLayout
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Start">
+                    <Image
+                        Source="logo_small"
+                        HeightRequest="110" />
+                    <Label
+                        Style="{StaticResource header}" />
+                </StackLayout>
+            </StackLayout>
+            <Frame
+                Style="{StaticResource frm_background}">
+                <StackLayout>
+                    <Label
+                        Text="Bewerter Login"
+                        HorizontalOptions="CenterAndExpand"/>
+                    <StackLayout
+                        VerticalOptions="CenterAndExpand">
+                        <Frame
+                            Style="{StaticResource frm}">
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <components:CustomEntry
+                                    Placeholder="E-Mail*"
+                                    Keyboard="Plain"
+                                    Text="{Binding UserEmail.Value}"
+                                    Style="{StaticResource entry_frm}" />
+                            </StackLayout>
+                        </Frame>
+                        <Label
+                            Text="{Binding UserEmail.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                            Style="{StaticResource ValidationErrorLabelStyle}" />
+                        <Frame
+                            Style="{StaticResource frm}"
+                            Margin="0,0,0,-7">
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <components:CustomEntry
+                                    Placeholder="Passwort*"
+                                    Keyboard="Plain"
+                                    Style="{StaticResource entry_frm}"
+                                    Text="{Binding UserPassword.Value}"
+                                    IsPassword="True" />
+                            </StackLayout>
+                        </Frame>
+                        <Label
+                            Text="{Binding UserPassword.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                            Style="{StaticResource ValidationErrorLabelStyle}" />
+                        <StackLayout
+                            Margin="20,0"
+                            Spacing="0">
+                            <Label
+                                Text="Wenn Sie Ihr Passwort vergessen haben, senden Sie bitte eine Nachricht an" />
+                            <Label
+                                Text="office@immowert4you.app"
+                                TextDecorations="Underline"
+                                TextColor="{StaticResource ColorBlueMain}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Tapped="TapGestureRecognizer_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout
+                    Orientation="Horizontal"
+                    VerticalOptions="EndAndExpand">
+                        <CheckBox
+                        IsChecked="{Binding IsCheckboxChecked}"
+                        Color="{Binding CheckBoxColor}"/>
+                        <StackLayout>
+                            <StackLayout
+                            Orientation="Horizontal">
+                                <Label
+                                    Margin="0,7,0,0 "
+                                    Style="{StaticResource label_grey}"
+                                    Text="Ich stimme der" />
+                                <Label  
+                                    Margin="0,7,0,0 "
+                                    TextColor="{StaticResource ColorBlueMain}"
+                                    TextDecorations="Underline"
+                                    Text="Datenschutzerklärung">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                        Command="{Binding NavigateToUserPolicy}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <Label
+                                    Margin="0,7,0,0 "
+                                    Style="{StaticResource label_grey}"
+                                    Text="zu" />
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                    <Button
+                        Margin="0,20"
+                        Style="{StaticResource bttnSmallBlue}"
+                        Text="Fortfahren"
+                        VerticalOptions="StartAndExpand"
+                        Command="{Binding Login}" />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentView>
+</ContentPage>

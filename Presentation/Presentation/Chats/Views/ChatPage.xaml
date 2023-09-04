@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Immowert4You.Presentation.Chats.Views.ChatPage"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="{StaticResource ColorBackground}"
+    IconImageSource="menu_mail"
+    Title="{Binding Header}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style
+                TargetType="Label"
+                x:Key="LblWhiteSmall">
+                <Setter
+                    Property="FontSize"
+                    Value="8" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorTransWhite}" />
+                <Setter
+                    Property="Margin"
+                    Value="0,-5,0,0" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Center" />
+            </Style>
+            <Style
+                TargetType="Label"
+                x:Key="LblWhite">
+                <Setter
+                    Property="FontSize"
+                    Value="13" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorTransWhite}" />
+                <Setter
+                    Property="Margin"
+                    Value="0,4" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Center" />
+            </Style>
+            <Style
+                TargetType="Label"
+                x:Key="LblWhiteMedium">
+                <Setter
+                    Property="FontSize"
+                    Value="16" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorTransWhite}" />
+                <Setter
+                    Property="Margin"
+                    Value="0,4" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Center" />
+            </Style>
+            <Style
+                TargetType="Label"
+                x:Key="LblWhiteBig">
+                <Setter
+                    Property="FontSize"
+                    Value="20" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorTransWhite}" />
+                <Setter
+                    Property="Margin"
+                    Value="0,0,0,10" />
+            </Style>
+            <Style
+                TargetType="Frame"
+                x:Key="frm">
+                <Setter
+                    Property="CornerRadius"
+                    Value="16" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource ColorTransWhite}" />
+                <Setter
+                    Property="Margin"
+                    Value="0,0" />
+                <Setter
+                    Property="Padding"
+                    Value="18,12" />
+            </Style>
+            <Style
+                TargetType="Frame"
+                x:Key="msg">
+                <Setter
+                    Property="CornerRadius"
+                    Value="20" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource ColorTransWhite}" />
+                <Setter
+                    Property="Padding"
+                    Value="18,4" />
+            </Style>
+            <Style
+                TargetType="ImageButton"
+                x:Key="arrow">
+                <Setter
+                    Property="HeightRequest"
+                    Value="38" />
+                <Setter
+                    Property="CornerRadius"
+                    Value="14" />
+                <Setter
+                    Property="Padding"
+                    Value="7" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource ColorBlueMain}" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="End" />
+                <Setter
+                    Property="Source"
+                    Value="arrow1" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentView
+        ControlTemplate="{StaticResource DismissiblePage}">
+        <StackLayout>
+            <StackLayout
+                Orientation="Horizontal">
+                <Button
+                    HorizontalOptions="FillAndExpand"
+                    x:Name="btnCrsel1"
+                    Style="{StaticResource bttnSmallCarousel}"
+                    Clicked="btnCrsel_Clicked"
+                    Text="IMMOBILIEN" />
+                <Button
+                    HorizontalOptions="FillAndExpand"
+                    x:Name="btnCrsel2"
+                    Style="{StaticResource bttnSmallCarousel}"
+                    Clicked="btnCrsel_Clicked"
+                    Text="NACHRICHTEN" />
+                <Button
+                    HorizontalOptions="FillAndExpand"
+                    x:Name="btnCrsel3"
+                    Style="{StaticResource bttnSmallCarousel}"
+                    Clicked="btnCrsel_Clicked"
+                    FontSize="9"
+                    Text="ANGEBOTE" />
+            </StackLayout>
+            <StackLayout
+                x:Name="container"
+                BackgroundColor="{StaticResource ColorTransWhite}"
+                Padding="0,10"
+                VerticalOptions="FillAndExpand">
+                <StackLayout
+                    x:Name="chats"
+                    IsVisible="false">
+                    <ListView
+                        x:Name="chatsList"
+                        IsRefreshing="{Binding IsChatRefreshing}"
+                        ItemsSource="{Binding Chats}"
+                        SelectedItem="{Binding SelectedChat}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout>
+                                        <StackLayout
+                                            Orientation="Horizontal">
+                                            <Label
+                                                TextColor="{StaticResource ColorBlueMain}"
+                                                Text="{Binding ZipCode}" />
+                                            <Label
+                                                TextColor="{StaticResource ColorBlueMain}"
+                                                Text="{Binding City}" />
+                                        </StackLayout>
+                                        <StackLayout
+                                            Margin="0,-7,-5,0"
+                                            Orientation="Horizontal">
+                                            <Label
+                                                Text="{Binding Address}" />
+                                            <Label
+                                                Text="{Binding HouseNumber}" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <StackLayout
+                    IsVisible="false"
+                    Margin="-20,0"
+                    x:Name="messages">
+                    <ListView
+                        x:Name="chat"
+                        IsRefreshing="{Binding IsChatRefreshing}"
+                        ItemsSource="{Binding Messages}"
+                        Refreshing="ChatRefreshing"
+                        SeparatorVisibility="None"
+                        SelectionMode="None"
+                        HasUnevenRows="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout
+                                        HorizontalOptions="{Binding IsOwnMessage, 
+                                    Converter={StaticResource IsOwnMessageToHorizontalOptionsConverter}}"
+                                        Margin="8,5">
+                                        <Frame
+                                            HorizontalOptions="{Binding IsOwnMessage,
+                                        Converter={StaticResource IsOwnMessageToHorizontalOptionsConverter}}"
+                                            Style="{StaticResource msg}"
+                                            BackgroundColor="{Binding IsOwnMessage,
+                                        Converter={StaticResource IsOwnMessageToBackgroundColorConverter}}">
+                                            <Label
+                                                Text="{Binding Text}"
+                                                TextColor="{Binding IsOwnMessage,
+                                            Converter={StaticResource IsOwnMessageToTextColorConverter}}"
+                                                HorizontalOptions="Center" />
+                                        </Frame>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <StackLayout
+                        IsVisible="{Binding IsChatVisible}"
+                        Spacing="25"
+                        Margin="5,0,0,5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="*" />
+                                <ColumnDefinition
+                                    Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    Height="Auto" />
+                                <RowDefinition
+                                    Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <StackLayout
+                                Grid.Column="0"
+                                Grid.Row="1">
+                                <ImageButton
+                                    Margin="0,5,0,0"
+                                    VerticalOptions="EndAndExpand"
+                                    HorizontalOptions="EndAndExpand"
+                                    Command="{Binding SendMessage}"
+                                    Style="{StaticResource arrow}" />
+                            </StackLayout>
+                            <Frame
+                                HorizontalOptions="FillAndExpand"
+                                CornerRadius="16"
+                                Grid.Column="0"
+                                Margin="0,0,50,0"
+                                Grid.Row="1"
+                                BackgroundColor="{StaticResource ColorTransWhite}"
+                                Padding="18,-2">
+                                <Editor
+                                    Text="{Binding ChatEntryText}"
+                                    Placeholder="Nachricht hier eingeben..."
+                                    TextColor="Black"
+                                    AutoSize="TextChanges"
+                                    VerticalOptions="FillAndExpand"
+                                    Keyboard="Chat"
+                                    FontSize="13"
+                                    PlaceholderColor="{StaticResource ColorGrayDark}" />
+                            </Frame>
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout
+                    x:Name="offers"
+                    IsVisible="false">
+                    <ListView
+                        ItemsSource="{Binding Offers}"
+                        HasUnevenRows="True"
+                        SelectionMode="None"
+                        IsRefreshing="{Binding IsChatRefreshing}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Label
+                                            TextColor="{StaticResource ColorBlueMain}"
+                                            Margin="0,10,0,0"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="{Binding Title}" />
+                                        <Image
+                                            HorizontalOptions="CenterAndExpand"
+                                            HeightRequest="100"
+                                            Source="{Binding Image}" />
+                                        <Label
+                                            Text="{Binding Message}" />
+                                        <Label
+                                            Margin="20"
+                                            Text="{Binding Url}" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentView>
+</ContentPage>

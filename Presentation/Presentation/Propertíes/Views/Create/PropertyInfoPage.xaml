@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<bases:BaseContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:bases="clr-namespace:Immowert4You.Presentation.Common.Bases.Views"
+    x:Class="Immowert4You.Presentation.Properties.Views.Create.PropertyInfoPage"
+    xmlns:components="clr-namespace:Immowert4You.Presentation.Common.Components"
+    BackgroundColor="{StaticResource ColorBackground}">
+    <ContentView
+        ControlTemplate="{StaticResource DismissiblePage}">
+        <ScrollView>
+            <StackLayout>
+                <StackLayout
+                    IsVisible="{Binding IsFlat, Converter={StaticResource InvertedBoolConverter}}">
+                    <Frame
+                        Style="{StaticResource frm1}">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                Text="Grundstücksgröße"
+                                HorizontalOptions="FillAndExpand"
+                                TextColor="{StaticResource ColorGray}"
+                                Style="{StaticResource entry_frm}" />
+                            <components:CustomEntry
+                                Text="{Binding ParcelSize.Value}"
+                                MaxLength="6"
+                                Keyboard="Numeric"
+                                HorizontalTextAlignment="End"
+                                WidthRequest="64"
+                                Style="{StaticResource entry_frm}"
+                                HorizontalOptions="Fill" >
+                                <components:CustomEntry.HideBottomLine>
+                                    <OnPlatform x:TypeArguments="x:Boolean" iOS="True" Android="False"/>
+                                </components:CustomEntry.HideBottomLine>
+                            </components:CustomEntry>
+                            <Label
+                                Text="m²"
+                                HorizontalOptions="End"
+                                TextColor="{StaticResource ColorGray}"
+                                Style="{StaticResource entry_frm}" />
+                        </StackLayout>
+                    </Frame>
+                    <Label
+                        Text="{Binding ParcelSize.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                        Style="{StaticResource ValidationErrorLabelStyle}" />
+                </StackLayout>
+                <StackLayout
+                    IsVisible="{Binding IsNotGrassland}">
+                    <Frame
+                        Style="{StaticResource frm1}">
+                        <StackLayout
+                            Padding="0,8"
+                            Orientation="Horizontal">
+                            <Label
+                                Text="Aufgeschlossen"
+                                HorizontalOptions="FillAndExpand"
+                                TextColor="{StaticResource ColorGray}"
+                                Style="{StaticResource entry_frm}" />
+                            <Switch
+                                IsToggled="{Binding Property.HasLift}" />
+                        </StackLayout>
+                    </Frame>
+                    <Label
+                        Text=""
+                        Style="{StaticResource ValidationErrorLabelStyle}" />
+                </StackLayout>
+                <StackLayout
+                    IsVisible="{Binding IsParcel}">
+                    <Label
+                        Margin="5,20,0,10"
+                        FontSize="18"
+                        Text="Sonstige relevanten Eigenschaften"
+                        Style="{StaticResource label_grey}" />
+                    <Editor
+                        HeightRequest="100"
+                        PlaceholderColor="LightGray"
+                        Placeholder="Alleinlage, Fahnengrundstück, verdichtete Bauweise möglich oder sonstige Besonderheiten." />
+                </StackLayout>
+                <!--<StackLayout
+                VerticalOptions="CenterAndExpand"
+                IsVisible="{Binding IsParcelSizeVisible}">
+                <Frame
+                    Margin="0,0,0,0"
+                    Style="{StaticResource frm1}">
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            Text="Aufgeschlossen"
+                            HorizontalOptions="FillAndExpand"
+                            TextColor="{StaticResource ColorGray}"
+                            Style="{StaticResource entry_frm}" />
+                        <components:CustomEntry
+                            Text="{Binding ParcelSize.Value}"
+                            MaxLength="6"
+                            Keyboard="Numeric"
+                            HorizontalTextAlignment="End"
+                            WidthRequest="64"
+                            Margin="0,0,-5,0"
+                            PlaceholderColor="{StaticResource ColorGrayLight}"
+                            Placeholder="________"
+                            Style="{StaticResource entry_frm}"
+                            HorizontalOptions="Fill" />
+                        <Label
+                            Text="m²"
+                            HorizontalOptions="End"
+                            TextColor="{StaticResource ColorGray}"
+                            Style="{StaticResource entry_frm}" />
+                    </StackLayout>
+                </Frame>
+                <Label
+                    Text="{Binding ParcelSize.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                    Style="{StaticResource ValidationErrorLabelStyle}" />
+            </StackLayout>-->
+                <StackLayout
+                    IsVisible="{Binding IsParcel, Converter={StaticResource InvertedBoolConverter}}">
+                    <Frame
+                        Style="{StaticResource frm1}">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                Text="Wohnfläche"
+                                HorizontalOptions="FillAndExpand"
+                                TextColor="{StaticResource ColorGray}"
+                                Style="{StaticResource entry_frm}" />
+                            <components:CustomEntry
+                                Text="{Binding FlatSize.Value}"
+                                MaxLength="6"
+                                HorizontalTextAlignment="End"
+                                WidthRequest="64"
+                                Keyboard="Numeric"
+                                Style="{StaticResource entry_frm}"
+                                HorizontalOptions="Fill">
+                                <components:CustomEntry.HideBottomLine>
+                                    <OnPlatform x:TypeArguments="x:Boolean" iOS="True" Android="False"/>
+                                </components:CustomEntry.HideBottomLine>
+                            </components:CustomEntry>
+                            <Label
+                                Text="m²"
+                                HorizontalOptions="End"
+                                TextColor="{StaticResource ColorGray}"
+                                Style="{StaticResource entry_frm}" />
+                        </StackLayout>
+                    </Frame>
+                    <Label
+                        Text="{Binding FlatSize.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                        Style="{StaticResource ValidationErrorLabelStyle}" />
+                </StackLayout>
+                <StackLayout
+                    IsVisible="{Binding IsParcel, Converter={StaticResource InvertedBoolConverter}}">
+                    <Frame
+                        Style="{StaticResource frm1}">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                Text="Baujahr"
+                                HorizontalOptions="FillAndExpand"
+                                Style="{StaticResource entry_frm}" />
+                            <components:CustomEntry
+                                Text="{Binding Year.Value}"
+                                PlaceholderColor="White"
+                                MaxLength="4"
+                                WidthRequest="90"
+                                Keyboard="Numeric"
+                                HorizontalTextAlignment="End"
+                                HorizontalOptions="Fill"
+                                TextColor="{StaticResource ColorGray}"
+                                Style="{StaticResource entry_frm}" >
+                                <components:CustomEntry.HideBottomLine>
+                                    <OnPlatform x:TypeArguments="x:Boolean" iOS="True" Android="False"/>
+                                </components:CustomEntry.HideBottomLine>
+                            </components:CustomEntry>
+                        </StackLayout>
+                    </Frame>
+                    <Label
+                        Text="{Binding Year.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                        Style="{StaticResource ValidationErrorLabelStyle}" />
+                </StackLayout>
+                <StackLayout
+                    IsVisible="{Binding IsHouse}">
+                    <Frame
+                        Style="{StaticResource frm1}">
+                        <StackLayout
+                            Padding="0,8"
+                            Orientation="Horizontal">
+                            <Label
+                                Text="Unterkellert"
+                                HorizontalOptions="FillAndExpand"
+                                TextColor="{StaticResource ColorGray}"
+                                Style="{StaticResource entry_frm}" />
+                            <Switch
+                                IsToggled="{Binding Property.HasBasement}" />
+                        </StackLayout>
+                    </Frame>
+                    <Label
+                        Text=""
+                        Style="{StaticResource ValidationErrorLabelStyle}" />
+                </StackLayout>
+                <StackLayout
+                    IsVisible="{Binding IsFloorAvailable}">
+                    <Frame
+                        Style="{StaticResource frm1}">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                Text="Stockwerk"
+                                HorizontalOptions="FillAndExpand"
+                                TextColor="{StaticResource ColorGray}"
+                                Style="{StaticResource entry_frm}" />
+                            <components:CustomEntry
+                                Text="{Binding Floor.Value}"
+                                HorizontalTextAlignment="End"
+                                WidthRequest="90"
+                                Keyboard="Numeric"
+                                HorizontalOptions="Fill"
+                                TextColor="{StaticResource ColorGray}"
+                                Style="{StaticResource entry_frm}" >
+                                <components:CustomEntry.HideBottomLine>
+                                    <OnPlatform x:TypeArguments="x:Boolean" iOS="True" Android="False"/>
+                                </components:CustomEntry.HideBottomLine>
+                            </components:CustomEntry>
+                        </StackLayout>
+                    </Frame>
+                    <Label
+                        Text="{Binding Floor.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                        Style="{StaticResource ValidationErrorLabelStyle}" />
+                </StackLayout>
+                <StackLayout
+                    IsVisible="{Binding IsFlat}">
+                    <Frame
+                        Style="{StaticResource frm1}"
+                        Margin="0,0,0,6">
+                        <StackLayout
+                            Padding="0,8"
+                            Orientation="Horizontal">
+                            <Label
+                                Text="Lift"
+                                HorizontalOptions="FillAndExpand"
+                                TextColor="{StaticResource ColorGray}"
+                                Style="{StaticResource entry_frm}" />
+                            <Switch
+                                IsToggled="{Binding Property.HasLift}" />
+                        </StackLayout>
+                    </Frame>
+                    <Label
+                        Text=""
+                        Style="{StaticResource ValidationErrorLabelStyle}" />
+                </StackLayout>
+                <StackLayout
+                    IsVisible="{Binding IsParcel, Converter={StaticResource InvertedBoolConverter}}">
+                    <Frame
+                        Style="{StaticResource frm1}">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="Center">
+                                <Label
+                                    Text="Zimmeranzahl"
+                                    TextColor="{StaticResource ColorGray}"
+                                    Style="{StaticResource entry_frm}" />
+                                <Label
+                                    Text="ohne Küche und Bad"
+                                    Margin="6,-8,0,0"
+                                    FontSize="8"
+                                    TextColor="{StaticResource ColorGray}"
+                                    Style="{StaticResource entry_frm}" />
+                            </StackLayout>
+                            <components:CustomEntry
+                                Text="{Binding RoomNumber.Value}"
+                                Keyboard="Numeric"
+                                WidthRequest="90"
+                                HorizontalTextAlignment="End"
+                                HorizontalOptions="Fill"
+                                TextColor="{StaticResource ColorGray}"
+                                Style="{StaticResource entry_frm}" >
+                                <components:CustomEntry.HideBottomLine>
+                                    <OnPlatform x:TypeArguments="x:Boolean" iOS="True" Android="False"/>
+                                </components:CustomEntry.HideBottomLine>
+                            </components:CustomEntry>
+                        </StackLayout>
+                    </Frame>
+                    <Label
+                        Text="{Binding RoomNumber.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                        Style="{StaticResource ValidationErrorLabelStyle}" />
+                </StackLayout>
+                <StackLayout
+                    IsVisible="{Binding IsParcel, Converter={StaticResource InvertedBoolConverter}}"
+                    VerticalOptions="CenterAndExpand">
+                    <Label
+                        Style="{StaticResource label_grey}"
+                        FontSize="15"
+                        Margin="5"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{Binding Source={x:Reference slider},
+                              Path=Value,
+                              StringFormat='Zustand der Immobilie: {0:0}/10'}" />
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            Text="0"
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="CenterAndExpand" />
+                        <Label
+                            Text="10" />
+                    </StackLayout>
+                    <Slider
+                        x:Name="slider"
+                        Value="{Binding ConditionRate}"
+                        MinimumTrackColor="{StaticResource ColorBlueMain}"
+                        MaximumTrackColor="Gray"
+                        Minimum="0"
+                        Maximum="10" />
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            Style="{StaticResource label_grey}"
+                            Text="Sehr schlecht" />
+                        <Label
+                            HorizontalOptions="CenterAndExpand"
+                            Style="{StaticResource label_grey}"
+                            Margin="-5,0,5,0"
+                            Text="Normal" />
+                        <Label
+                            Style="{StaticResource label_grey}"
+                            Text="Topzustand" />
+                    </StackLayout>
+                </StackLayout>
+                <Button
+                    Style="{StaticResource bttnSmallBlue}"
+                    Text="WEITER"
+                    Margin="0,20"
+                    VerticalOptions="EndAndExpand"
+                    Command="{Binding NavigateToHouseRooms}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentView>
+</bases:BaseContentPage>

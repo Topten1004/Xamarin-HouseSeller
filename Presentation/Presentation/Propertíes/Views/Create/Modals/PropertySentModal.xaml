@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<bases:BaseModalPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:bases="clr-namespace:Immowert4You.Presentation.Common.Bases.Views"
+    x:Class="Immowert4You.Presentation.Propertíes.Views.Create.Modals.PropertySentModal"
+    BackgroundColor="Transparent">
+    <Grid
+        Margin="20"
+        RowDefinitions="*,auto,*"
+        BackgroundColor="Transparent"
+        VerticalOptions="FillAndExpand">
+        <StackLayout
+            BackgroundColor="Transparent"
+            VerticalOptions="FillAndExpand"
+            Grid.RowSpan="3">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding CloseModalCommand}" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+        <Frame
+            Grid.Row="1"
+            CornerRadius="50"
+            Padding="34,30"
+            Margin="20"
+            BackgroundColor="White"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <StackLayout>
+                <Image
+                    Source="guy_thumb_up"
+                    HeightRequest="110" />
+                <Label
+                    Margin="0,10"
+                    HorizontalTextAlignment="Center"
+                    Text="Ihre Immobilendaten wurden einen regionalen Experten weitergeleitet. Sobald die Bewertung fertig ist werden Sie benachrichtigt." />
+                <Button 
+                    Style="{StaticResource bttnSmallBlue}"
+                    Text="BEENDEN"
+                    Command="{Binding SaveAndQuit}"/>
+            </StackLayout>
+        </Frame>
+    </Grid>
+</bases:BaseModalPage>

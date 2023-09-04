@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<bases:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:bases="clr-namespace:Immowert4You.Presentation.Common.Bases.Views"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Immowert4You.Presentation.Propertíes.Views.Increase.PropertyImprovmentsPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label
+                    Text="{Binding ImprovmentGroup.Header}"
+                    FontSize="18"
+                    Margin="0,10,0,0"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Start"
+                    Style="{StaticResource label_grey}" />
+                <Label
+                    TextColor="{StaticResource ColorBlueMain}"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="{Binding ImprovmentGroup.Header2}" />
+                <Label
+                    Margin="15,0"
+                    TextColor="Black"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding ImprovmentGroup.Paragraph}" />
+                <StackLayout
+                    Margin="0,0,0,10"
+                    BindableLayout.ItemsSource="{Binding ImprovmentGroup.Improvments}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout
+                                Margin="15,0"
+                                Orientation="Horizontal">
+                                <Label
+                                    TextColor="{Binding IsHeader, Converter={StaticResource IsHeaderToColorConverter}}"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding Title}" />
+                                <CheckBox
+                                    IsVisible="{Binding IsHeader, Converter={StaticResource InvertedBoolConverter}}"
+                                    IsChecked="{Binding Value}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                <StackLayout
+                    IsVisible="{Binding Partner, Converter={StaticResource NullToBooleanConverter}}">
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        FontSize="15"
+                        TextColor="Black"
+                        Text="{Binding ImprovmentGroup.Slogan}" />
+                    <Image
+                        HeightRequest="150"
+                        Source="{Binding Partner.Logo}"
+                        Margin="0,10">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding VisitWebsite}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</bases:BaseContentPage>

@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Immowert4You.Presentation.Customers.Views.IncreasePropertyValuePage"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="{StaticResource ColorBackground}"
+    Title="Steigerung"
+    IconImageSource="thumbnail_Steigerung">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style
+                TargetType="Button"
+                x:Key="bttnSmallBlue1">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource ColorBlueMain}" />
+                <Setter
+                    Property="CornerRadius"
+                    Value="30" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="Padding"
+                    Value="6,0" />
+                <Setter
+                    Property="TextColor"
+                    Value="white" />
+                <Setter
+                    Property="BorderColor"
+                    Value="{StaticResource ColorGray}" />
+                <Setter
+                    Property="BorderWidth"
+                    Value="0.1" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="30" />
+                <Setter
+                    Property="WidthRequest"
+                    Value="110" />
+            </Style>
+            <Style
+                TargetType="Button"
+                x:Key="bttnSmallWhite">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="White" />
+                <Setter
+                    Property="CornerRadius"
+                    Value="30" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="Padding"
+                    Value="6,0" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorGrayDark}" />
+                <Setter
+                    Property="BorderColor"
+                    Value="{StaticResource ColorGrayDark}" />
+                <Setter
+                    Property="BorderWidth"
+                    Value="0.1" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="30" />
+                <Setter
+                    Property="WidthRequest"
+                    Value="110" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentView
+        ControlTemplate="{StaticResource DismissiblePage}">
+        <StackLayout>
+            <StackLayout
+                IsVisible="{Binding IsPropertyAvailable, Converter={StaticResource InvertedBoolConverter}}"
+                VerticalOptions="FillAndExpand">
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Zu Ihrer Immowertsteigerung kommen Sie erst nachdem Sie die Bewertung bekommen haben."
+                    HorizontalTextAlignment="Center"/>
+                <Image
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Source="money_up"
+                    HeightRequest="200"/>
+            </StackLayout>
+            <StackLayout
+                IsVisible="{Binding IsPropertyAvailable}"
+                Padding="-10">
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Mit folgenden Schritten zum höheren Verkaufspreis"
+                    Style="{StaticResource label_grey}" />
+                <StackLayout
+                    Orientation="Horizontal">
+                    <StackLayout
+                        Margin="5,0,0,0">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                TextColor="{StaticResource ColorBlueMain}"
+                                Text="{Binding Property.ZipCode}" />
+                            <Label
+                                TextColor="{StaticResource ColorBlueMain}"
+                                Text="{Binding Property.City}" />
+                        </StackLayout>
+                        <StackLayout
+                            Margin="0,-7,-5,0"
+                            Orientation="Horizontal">
+                            <Label
+                                TextColor="{StaticResource ColorBlueMain}"
+                                Text="{Binding Property.Address}" />
+                            <Label
+                                TextColor="{StaticResource ColorBlueMain}"
+                                Text="{Binding Property.HouseNumber}" />
+                        </StackLayout>
+                    </StackLayout>
+                    <Label
+                        HorizontalOptions="EndAndExpand"
+                        Margin="0,0,5,0"
+                        FontSize="16"
+                        TextColor="{StaticResource ColorBlueMain}"
+                        Text="{Binding NewPrice, StringFormat='€ {0:N0}.-'}" />
+                </StackLayout>
+                <ScrollView
+                    Padding="0,0,0,10">
+                    <StackLayout>
+                        <StackLayout
+                            VerticalOptions="Center">
+                            <StackLayout
+                                Orientation="Horizontal"
+                                HorizontalOptions="End"
+                                Margin="0,0,16,0">
+                                <Label
+                                    Text="Erledigt"
+                                    HorizontalOptions="End"
+                                    FontSize="10"
+                                    Style="{StaticResource label_grey}" />
+                                <Label
+                                    Text="Punkte"
+                                    FontSize="10"
+                                    HorizontalOptions="End"
+                                    Style="{StaticResource label_grey}" />
+                            </StackLayout>
+                            <Frame
+                                Style="{StaticResource frm1}">
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        Text="Aufräumen"
+                                        HorizontalOptions="FillAndExpand"
+                                        TextColor="{StaticResource ColorGray}"
+                                        Style="{StaticResource entry_frm}">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding NavigateToImprovementsPage}"
+                                                CommandParameter="0" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <CheckBox
+                                        HorizontalOptions="End"
+                                        CheckedChanged="CheckBox_CheckedChanged" />
+                                    <Label
+                                        Text="10"
+                                        HorizontalOptions="End"
+                                        Style="{StaticResource text_hour}" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame
+                                Style="{StaticResource frm1}">
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        Text="Sauberkeit"
+                                        HorizontalOptions="FillAndExpand"
+                                        TextColor="{StaticResource ColorGray}"
+                                        Style="{StaticResource entry_frm}">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding NavigateToImprovementsPage}"
+                                                CommandParameter="1" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <CheckBox
+                                        HorizontalOptions="End"
+                                        CheckedChanged="CheckBox_CheckedChanged_1" />
+                                    <Label
+                                        Text="10"
+                                        HorizontalOptions="End"
+                                        Style="{StaticResource text_hour}" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame
+                                Style="{StaticResource frm1}">
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        Text="Homestaging"
+                                        HorizontalOptions="FillAndExpand"
+                                        TextColor="{StaticResource ColorGray}"
+                                        Style="{StaticResource entry_frm}">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding NavigateToImprovementsPage}"
+                                                CommandParameter="2" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <CheckBox
+                                        HorizontalOptions="End"
+                                        CheckedChanged="CheckBox_CheckedChanged_2" />
+                                    <Label
+                                        Text="40"
+                                        HorizontalOptions="End"
+                                        Style="{StaticResource text_hour}" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame
+                                Style="{StaticResource frm1}">
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        Text="Diverse Reparaturen"
+                                        HorizontalOptions="FillAndExpand"
+                                        TextColor="{StaticResource ColorGray}"
+                                        Style="{StaticResource entry_frm}">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding NavigateToImprovementsPage}"
+                                                CommandParameter="3" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <CheckBox
+                                        HorizontalOptions="End"
+                                        CheckedChanged="CheckBox_CheckedChanged_3" />
+                                    <Label
+                                        Text="20"
+                                        HorizontalOptions="End"
+                                        Style="{StaticResource text_hour}" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame
+                                Style="{StaticResource frm1}">
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        Text="Außenbereichspflege"
+                                        HorizontalOptions="FillAndExpand"
+                                        TextColor="{StaticResource ColorGray}"
+                                        Style="{StaticResource entry_frm}">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding NavigateToImprovementsPage}"
+                                                CommandParameter="4" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <CheckBox
+                                        HorizontalOptions="End"
+                                        CheckedChanged="CheckBox_CheckedChanged_4" />
+                                    <Label
+                                        Text="20"
+                                        HorizontalOptions="End"
+                                        Style="{StaticResource text_hour}" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame
+                                Style="{StaticResource frm1}">
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        Text="Immobilienmakler"
+                                        HorizontalOptions="FillAndExpand"
+                                        TextColor="{StaticResource ColorGray}"
+                                        Style="{StaticResource entry_frm}">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding NavigateToImprovementsPage}"
+                                                CommandParameter="5" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <CheckBox
+                                        HorizontalOptions="End"
+                                        CheckedChanged="CheckBox_CheckedChanged_5" />
+                                    <Label
+                                        Text="40"
+                                        HorizontalOptions="End"
+                                        Style="{StaticResource text_hour}" />
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout
+                            Orientation="Horizontal"
+                            HorizontalOptions="End">
+                            <Label
+                                HorizontalOptions="End"
+                                Style="{StaticResource label_grey}"
+                                FontSize="10"
+                                Text="Punkte" />
+                            <Label
+                                x:Name="total_lbl"
+                                HorizontalOptions="End"
+                                Style="{StaticResource text_hour}"
+                                FontSize="14"
+                                Text="0/140" />
+                        </StackLayout>
+                        <StackLayout
+                            Orientation="Horizontal"
+                            HorizontalOptions="End">
+                            <Label
+                                HorizontalOptions="End"
+                                Style="{StaticResource label_grey}"
+                                FontSize="10"
+                                Text="Ihre Immowertsteigerung" />
+                            <Label
+                                HorizontalOptions="End"
+                                Style="{StaticResource text_hour}"
+                                FontSize="23"
+                                Text="{Binding Total, StringFormat='~ € Summe {0}.-'}" />
+                        </StackLayout>
+                        <Label
+                            Margin="10,0"
+                            Style="{StaticResource label_grey}"
+                            Text="Durch eine optimale Präsentation Ihrer Immobilie ist durchaus eine Wertsteigerung von bis zu 14% möglich" />
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>
+    </ContentView>
+</ContentPage>

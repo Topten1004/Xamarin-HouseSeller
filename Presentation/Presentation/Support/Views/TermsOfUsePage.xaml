@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<bases:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Immowert4You.Presentation.Support.Views.TermsOfUsePage"
+    xmlns:bases="clr-namespace:Immowert4You.Presentation.Common.Bases.Views"
+    BackgroundColor="{StaticResource ColorBackground}">
+    <ContentView
+        ControlTemplate="{StaticResource DismissiblePage}">
+        <ScrollView>
+            <StackLayout>
+                <Label 
+                    Text="I. Präambel" FontAttributes="Bold" TextColor="Gray" Margin="5"/>
+                <Label
+                    Text="1. Immowert4You ermöglicht es registrierten Nutzern, unter gleichzeitiger Bewertung ihrer eigenen Verkaufsbereitschaft durch Bereitstellen von Lichtbildern und sonstigen Informationen über ihre Immobilie von einem an der Plattform teilnehmenden Makler eine indikative Marktwertermittlung der Immobilie zu erlangen. Idee und Ausarbeitung der Plattform sind geistiges Eigentum von Norbert Bauer." />
+                <Label
+                    Text="2. Immowert4You bietet Maklern die Möglichkeit, im Rahmen der Plattform über die Abgabe einer Immobilienbewertung mit Nutzern in Kontakt zu treten. Die Immobilienbewertung wird den Nutzern im Rahmen der Plattform zugemittelt. Nutzer müssen bei der Versendung von Anfragen der Weiterleitung ihrer bekannt gegebenen Daten ebenso zustimmen wie der nachfolgenden (insb telefonischen) Kontaktaufnahme durch den Makler. Makler haben überdies die Möglichkeit, Nutzer innerhalb der App werblich zu erreichen. " />
+                <Label
+                    Text="3. Immowert4You bietet weiters einen Bereich an, in dem Tipps zur Adaptierung von Immobilien zur Verkaufsförderung bereitgestellt werden können." />
+                <Label 
+                    Text="II. Nutzerkonto" FontAttributes="Bold" TextColor="Gray" Margin="5"/>
+                <Label
+                    Text="1. Die Nutzung von Immowert4You steht jedermann offen, der das 18. Lebensjahr vollendet hat. Vor erstmaliger Nutzung der App müssen Nutzer ein Nutzerkonto anlegen." />
+                <Label
+                    Text="2. Nutzer müssen bei Anlage eines Benutzerkontos verpflichtend zumindest folgende Angaben bekannt geben:" />
+                <Label
+                    Text="Name, Vorname" />
+                <Label
+                    Text="Gültige Mobiltelefonnummer" />
+                <Label
+                    Text="3. Nutzer können jederzeit von Immowert4You eine vollständige Löschung ihres Nutzerkontos verlangen. Diesfalls kann sich ein Nutzer zwar erneut zu Immowert4You anmelden, Daten aus der vorherigen Nutzung, insb auch angesammelte Vorteile sind aber erloschen und stehen nicht mehr zur Verfügung." />
+                <Label
+                    Text="III. Zustimmungen:" FontAttributes="Bold" TextColor="Gray" Margin="5" />
+                <Label
+                    Text="1. Der Nutzer erteilt seine ausdrückliche Zustimmung, dass die von ihm bekannt gegebenen Daten vom Betreiber gespeichert und verarbeitet werden. Dafür gilt die Datenschutzerklärung von Immowert4You, abrufbar hier." />
+                <Label 
+                    Text="2. Insbesondere erteilt der Nutzer seine Zustimmung, dass sämtliche von ihm im Rahmen einer Anfrage bekannt gegebenen Daten inklusive seiner persönlichen Daten und sämtlicher auf eine konkrete Liegenschaft Bezug habenden Daten, von Immowert4You an einen an der Plattform Immowert4You teilnehmenden Maklern zumZweck der Kontaktaufnahme mit dem Nutzer und der Erstellung einer Bewertung weiterleitet." />
+                <Label
+                    Text="3. Der Nutzer erteilt seine Zustimmung dazu, dass er im Rahmen der App Immowert4You auf sein Nutzungsverhalten abgestimmte Werbeeinschaltungen von in Immowert4You gelisteten Maklern, von Unternehmen, die in dem dafür vorgesehenen Bereich Tipps zur Adaptierung von Immobilien zur Verkaufsförderung bereitstellenund von Drittanbietern aus den Bereichen Energiewirtschaft (Strom- Gasanbieter), Immobilienwirtschaft, Baugewerbe, Möbelindustrie, Home Staging, Reinigung/Hausbetreuung, Baumärkte, Notare/Rechtsanwälte, Banken, Versicherungen und Finanzdienstleister sowie vergleichbaren Branchen erhält. Zu diesem Zweck wird Immowert4You vom Nutzer eingegebene Daten auswerten, allerdings die Auswertung nicht an ein gelistetes Unternehmen oder an Dritte weitergeben. Dazu gilt die Datenschutzerklärung von Immowert4You, abrufbar hier. " />
+                <Label
+                    Text="4. Immowert4You stellt Unternehmen und registrierten Nutzern lediglich eine Plattform zur Verfügung. Für den Inhalt der jeweiligen Eintragung oder Mitteilung jedweder Art liegt die ausschließliche Verantwortung beim Äußernden. Immowert4You übernimmt überdies keine Haftung für den Inhalt von Eintragungen oder Bewertungen. Immowert4You wird von einer Äußerung des Nutzers Betroffenen über Verlangen im Rahmen und im Umfang bestehender gesetzlicher Vorschriften Auskünfte über registrierte Nutzer erteilen. Der Nutzer nimmt dies zustimmend zur Kenntnis." />
+                <Label 
+                    Text="IV. Rechte und Pflichten der Nutzer, Verhaltensregeln" TextColor="Gray" Margin="5" />
+                <Label 
+                    Text="1. Immowert4You steht den Nutzern ausschließlich zu den in der Präambel beschriebenen Zwecken zur Verfügung. Nutzer sind insbesondere verpflichtet, Äusserungen nach bestem Wissen und Gewissen und wahrheitsgemäß vorzunehmen. " />
+                <Label 
+                    Text="2. Der Nutzer sichert zu, dass von ihm im Rahmen der App bereitgestellten Kontaktdaten, Lichtbilder und sonstigen Informationen und Äußerungen richtig, vollständig und aussagekräftig sind. Der Nutzer sichert zu, dass es sich bei der zur Bewertung angefragten Immobilie um sein Eigentum handelt oder er zu einer Verfügung darüber zumindest berechtigt wäre. Der Nutzer sichert zu, dass sämtliche von ihm bereitgestellte Materialien frei von Rechten Dritter sind und in keinerlei Rechte Dritter eingreifen. Das gilt insbesondere für Lichtbilder und sämtliche darauf abgebildete Personen und darin enthaltene Informationen. Der Nutzer sichert zu, dass er über alle erforderlichen Einwilligungen zur Verwendung der von ihm im Rahmen der App, insbesondere im Rahmen einer Anfrage verwendeten Materialien und Daten verfügt. Der Nutzer hält Immowert4You vollkommen schad- und klaglos. " />
+                <Label 
+                    Text="3. Nutzer sind verpflichtet, im Rahmen der App und insbesondere der darin bestehenden Interaktionsmöglichkeiten Rechte Dritter und deren Privatsphäre zu respektieren. Insbesondere sind beleidigende, rassistische, persönlichkeitsverletzende oder sonst rechtswidrige Äußerungen oder Handlungen unzulässig und können zu einer Sperre des Nutzers durch Immowert4You führen." />
+                <Label 
+                    Text="4. Nutzer sind zu einem respekt- und rücksichtsvollen Umgang verpflichtet. Das umfasst insbesondere einen Verzicht auf Feindseligkeiten, Unterstellungen, Herabwürdigungen, Beleidigungen, Fäkalsprache udgl sowie die Anwendung einer anlassbezogenen sachlichen Ausdrucksweise." />
+                <Label 
+                    Text="5. Eine Verwendung oder Auswertung der in der App verfügbaren Informationen zu eigenen oder fremden geschäftlichen Zwecken ist den Nutzern nicht gestattet. Nutzer dürfen daher verfügbare Informationen in keiner Weise für geschäftliche Zwecke nutzen." />
+                <Label
+                    Text="V. Rechte und Pflichten von Immowert4You" TextColor="Gray" Margin="5"/>
+                <Label 
+                    Text="1. Immowert4You steht registrierten Nutzern kostenlos zur Verfügung. Nutzer haben allerdings selbst und auf eigene Kosten für eine entsprechende Verbindung zum Internet und für ein geeignetes Empfangsgerät zu sorgen." />
+                <Label 
+                    Text="2. Immowert4You stellt Maklern, Unternehmen und registrierten Nutzern lediglich eine Plattform zur Verfügung. Für den Inhalt der jeweiligen Eintragung oder Mitteilung jedweder Art liegt die ausschließliche Verantwortung beim jeweils Äußernden. Immowert4You haftet in keinem Fall für den Inhalt von Wertermittlungen, insbesonderen deren sachliche Richtigkeit oder Vertretbarkeit, oder für sonstige Auskünfte oder Einträge von Maklern. Immowert4You übernimmt keine Haftung für den Inhalt von Eintragungen oder Bewertungen." />
+                <Label 
+                    Text="3. Einen Widerruf des Nutzers hinsichtlich einer zuvor erteilten Einwilligung zur Weitergabe von Daten an einen Makler, wird Immowert4You ohne schuldhafte Verzögerung an den Makler weitergeben und eine weitere Nutzung und Verarbeitung weitergegebener Daten untersagen. Der Nutzer nimmt zur Kenntnis, dass dies eine allfällige Berechtigung des Maklers zur Nutzung und Verarbeitung von Daten unberührt lässt, die diesem vom Nutzer auf direktem Wege mitgeteilt wurden. " />
+                <Label 
+                    Text="4. Kommunikationsmöglichkeiten im Rahmen der App werden von Immowert4You nicht moderiert und auch nicht überwacht. Nutzer und Unternehmen haben das Recht, Verstöße gegen die gem P IV. einzuhaltenden Verhaltensregeln oder sonstige Beschwerden bei Immowert4You zu melden. Immowert4You wird eindeutige und nachweisliche Verstöße gegen Verhaltensregeln zum Anlass nehmen, Äußerungen oder Verhaltensweisen aus der App zu entfernen oder, insbesondere im Wiederholungsfall, Teilnehmer auf Zeit oder gänzlich zu sperren. Sonstige Beschweren wird Immowert4You prüfen und erforderlichen falls Maßnahmen ergreifen" />
+                <Label 
+                    Text="5. Immowert4You behält sich auch darüber hinaus das Recht vor, Nutzer ohne Angabe von Gründen auf Zeit oder dauerhaft zu sperren." />
+                <Label 
+                    Text="6. Immowert4You übernimmt keine Haftung für Unterbrechungen oder Störungen der Abrufbarkeit der App Immowert4You, es sei denn, solche Unterbrechungen oder Störungen wurden von Immowert4You oder von Beauftragten oder Gehilfen von Immowert4You schuldhaft verursacht." />
+                <Label 
+                    Text="7. Die Haftung von Immowert4You ist in jedem Fall auf grobe Fahrlässigkeit und Vorsatz beschränkt, dies mit Ausnahme der Haftung für Schäden aus Verletzung der körperlichen Unversehrtheit." />
+                <Label 
+                    Text="VI. Sonstiges" TextColor="Gray" Margin="5" />
+                <Label
+                    Text="1. Immowert4You behält sich das Recht vor, diese Nutzungsbedingungen einseitig zu ergänzen oder zu ändern. Sofern sich dadurch die Rechtsposition des Nutzers verändern sollte, wird der Nutzer über die App Gelegenheit bekommen, der Änderung zuzustimmen oder sie abzulehnen. Bei Ablehnung behält sich der Betreiber vor, das Konto des Nutzers zu sperren. " />
+                <Label
+                    Text="2. Als ausschließlichen Gerichtsstand für Streitigkeiten aus oder im Zusammenhang mit der Nutzung der App Immowert4You vereinbaren die Parteien die Zuständigkeit des sachlich zuständigen Gerichts am Sitz von Immowert4You. Der Nutzer unterwirft sich ausdrücklich der österreichischen inländischen Gerichtsbarkeit. " />
+                <Label
+                    Text="3. Erfüllungsort ist der Sitz von Immowert4You." Margin="0, 0, 0, 30" />
+            </StackLayout>
+        </ScrollView>
+    </ContentView>
+</bases:BaseContentPage>

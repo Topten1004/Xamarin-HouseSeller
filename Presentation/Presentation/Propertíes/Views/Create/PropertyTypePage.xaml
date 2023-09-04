@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Immowert4You.Presentation.Properties.Views.Create.PropertyTypePage"
+    IconImageSource="menu_home"
+    Title="Immobilie"
+    BackgroundColor="{StaticResource ColorBackground}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style
+                TargetType="Label"
+                x:Key="text_right">
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorGrayDark}" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="FontSize"
+                    Value="11" />
+                <Setter
+                    Property="Margin"
+                    Value="0,0,0,-3" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="End" />
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="End" />
+                <Setter
+                    Property="Text"
+                    Value="Durchschnittliche Bewertungsdauer" />
+            </Style>
+            <Style
+                TargetType="Label"
+                x:Key="text_left">
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorGrayDark}" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="FontSize"
+                    Value="16" />
+                <Setter
+                    Property="Margin"
+                    Value="0,0,0,28" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="StartAndExpand" />
+                <Setter
+                    Property="Grid.Column"
+                    Value="0" />
+            </Style>
+            <Style
+                TargetType="Image"
+                x:Key="image_bttn">
+                <Setter
+                    Property="HeightRequest"
+                    Value="100" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="CenterAndExpand" />
+                <Setter
+                    Property="Grid.Column"
+                    Value="1" />
+            </Style>
+            <Style
+                TargetType="BoxView"
+                x:Key="line">
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="Grid.ColumnSpan"
+                    Value="3" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="3" />
+                <Setter
+                    Property="Color"
+                    Value="{StaticResource ColorBlueMain}" />
+            </Style>
+            <Style
+                TargetType="StackLayout"
+                x:Key="stack">
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="End" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="Grid.Column"
+                    Value="2" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentView
+        ControlTemplate="{StaticResource DismissiblePage}">
+        <Grid
+            Padding="0"
+            Margin="0">
+            <Frame
+                Style="{StaticResource frm_background}">
+                <StackLayout
+                    Padding="-10,0">
+                    <Label
+                        Text="Objektart auswählen &amp; starten"
+                        Style="{StaticResource header2}"
+                        TextColor="{StaticResource ColorBlueMain}"
+                        Margin="0,-20,0,0"
+                        FontSize="15"
+                        HorizontalOptions="Center"
+                        VerticalOptions="CenterAndExpand" />
+                    <StackLayout
+                        HorizontalOptions="CenterAndExpand"
+                        Spacing="0">
+                        <Grid
+                            ColumnDefinitions="1*,1*,1*">
+                            <BoxView
+                                Style="{StaticResource line}" />
+                            <Label
+                                Text="Haus"
+                                Style="{StaticResource text_left}" />
+                            <Image
+                                Source="house_1"
+                                Style="{StaticResource image_bttn}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding NavigateToSubcategoryPage}">
+                                        <TapGestureRecognizer.CommandParameter>
+                                            <x:Int32>0</x:Int32>
+                                        </TapGestureRecognizer.CommandParameter>
+                                    </TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <StackLayout
+                                Style="{StaticResource stack}">
+                                <Label
+                                    Style="{StaticResource text_right}" />
+                                <Label
+                                    Text="0h : 00min"
+                                    FontSize="20"
+                                    Style="{StaticResource text_hour}" />
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout
+                        VerticalOptions="CenterAndExpand"
+                        Margin="0,15,0,0"
+                        Spacing="0">
+                        <Grid
+                            ColumnDefinitions="1*,1*,1*">
+                            <BoxView
+                                Style="{StaticResource line}" />
+                            <Label
+                                Text="Wohnung"
+                                Style="{StaticResource text_left}" />
+                            <Image
+                                Source="flat"
+                                Style="{StaticResource image_bttn}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding NavigateToSubcategoryPage}">
+                                        <TapGestureRecognizer.CommandParameter>
+                                            <x:Int32>1</x:Int32>
+                                        </TapGestureRecognizer.CommandParameter>
+                                    </TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <StackLayout
+                                Style="{StaticResource stack}">
+                                <Label
+                                    Style="{StaticResource text_right}" />
+                                <Label
+                                    Text="0h : 00min"
+                                    FontSize="20"
+                                    Style="{StaticResource text_hour}" />
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout
+                        VerticalOptions="CenterAndExpand"
+                        Spacing="0">
+                        <Grid
+                            ColumnDefinitions="1*,1*,1*">
+                            <BoxView
+                                Style="{StaticResource line}" />
+                            <Label
+                                Text="Grundstück"
+                                Style="{StaticResource text_left}" />
+                            <Image
+                                Source="parcel"
+                                Style="{StaticResource image_bttn}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding NavigateToSubcategoryPage}">
+                                        <TapGestureRecognizer.CommandParameter>
+                                            <x:Int32>2</x:Int32>
+                                        </TapGestureRecognizer.CommandParameter>
+                                    </TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <StackLayout
+                                Style="{StaticResource stack}">
+                                <Label
+                                    Style="{StaticResource text_right}" />
+                                <Label
+                                    Text="0h : 00min"
+                                    FontSize="20"
+                                    Style="{StaticResource text_hour}" />
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                    <Label
+                        TextColor="{StaticResource ColorGrayDark}"
+                        Text="Diese Bewertung wird von einem regionalen Immobilienexperten durchgeführt." />
+                    <Grid
+                        Margin="0,10"
+                        ColumnDefinitions="2*,*,*">
+                        <Label
+                            TextColor="{StaticResource ColorGrayDark}"
+                            Text="Bewertungszeiten" />
+                        <Label
+                            TextColor="{StaticResource ColorGrayDark}"
+                            Grid.Column="1"
+                            Text="MO - FR" />
+                        <Label
+                            TextColor="{StaticResource ColorGrayDark}"
+                            Grid.Column="2"
+                            Text="8-18 Uhr" />
+                        <Label
+                            TextColor="{StaticResource ColorGrayDark}"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="SA" />
+                        <Label
+                            TextColor="{StaticResource ColorGrayDark}"
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Text="8-12 Uhr" />
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ContentView>
+</ContentPage>

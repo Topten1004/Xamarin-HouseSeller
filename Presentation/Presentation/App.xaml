@@ -1,0 +1,692 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:components="clr-namespace:Immowert4You.Presentation.Common.Components"
+    xmlns:converters="clr-namespace:Immowert4You.Presentation.Common.Converters"
+    xmlns:mesConvertes="clr-namespace:Immowert4You.Presentation.Common.Converters.Messages"
+    x:Class="Immowert4You.Presentation.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <converters:IntentionToSellToIsUrgentConverter
+                x:Key="IntentionToSellToIsUrgentConverter"/>
+            <converters:InvertedIsNullOrEmptyStringToBoolConverter
+                x:Key="InvertedIsNullOrEmptyStringToBoolConverter"/>
+            <converters:FirstValidationErrorConverter
+                x:Key="FirstValidationErrorConverter" />
+            <converters:InvertedBoolConverter
+                x:Key="InvertedBoolConverter" />
+            <converters:NullToBooleanConverter
+                x:Key="NullToBooleanConverter" />
+            <converters:InvertedNullToBooleanConverter
+                x:Key="InvertedNullToBooleanConverter" />
+            <converters:IsEmptyArrayToBooleanConverter
+                x:Key="IsEmptyArrayToBooleanConverter" />
+            <converters:BooleanToYesNoStringConverter
+                x:Key="BooleanToYesNoConverter" />
+            <mesConvertes:IsOwnMessageToBackgroundColorConverter
+                x:Key="IsOwnMessageToBackgroundColorConverter" />
+            <mesConvertes:IsOwnMessageToHorizontalOptionsConverter
+                x:Key="IsOwnMessageToHorizontalOptionsConverter" />
+            <mesConvertes:IsOwnMessageToTextColorConverter
+                x:Key="IsOwnMessageToTextColorConverter" />
+            <converters:BooleanToHasContractString
+                x:Key="BooleanToHasContractString" />
+            <converters:DiplayedDateTimeToRemainDateTimeConverter
+                x:Key="DiplayedDateTimeToRemainDateTimeConverter" />
+            <converters:IsHeaderToColorConverter
+                x:Key="IsHeaderToColorConverter" />
+            <converters:MaklerPlaceToNameConverter
+                x:Key="MaklerPlaceToNameConverter" />
+            <Color
+                x:Key="ErrorColor">#ff5252</Color>
+            <Color
+                x:Key="ColorBlueMain">#0D62B0</Color>
+            <Color
+                x:Key="ColorBlue
+                MainTransparent">#A00D62B0</Color>
+            <Color
+                x:Key="ColorGray">#B4B4B4</Color>
+            <Color
+                x:Key="ColorGrayDark">#989898</Color>
+            <Color
+                x:Key="ColorGrayLight1">#c4c4c4</Color>
+            <Color
+                x:Key="ColorGrayLight">#E8E8E8</Color>
+            <Color
+                x:Key="ColorBackground">#f8f8f8</Color>
+            <Color
+                x:Key="ColorTransWhite">#4fffffff</Color>
+            <OnPlatform
+                x:Key="LittleSize"
+                x:TypeArguments="x:Double">
+                <On
+                    Platform="iOS"
+                    Value="13" />
+                <On
+                    Platform="Android"
+                    Value="12" />
+            </OnPlatform>
+            <OnPlatform
+                x:Key="HasShadow"
+                x:TypeArguments="x:Boolean"
+                iOS="False"
+                Android="True"/>
+            <Style
+                TargetType="NavigationPage">
+                <Setter
+                    Property="BarBackgroundColor"
+                    Value="White" />
+                <Setter
+                    Property="BarTextColor"
+                    Value="{StaticResource ColorBlueMain}" />
+            </Style>
+            <Style
+                TargetType="Label">
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorGray}" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="FontSize"
+                    Value="13" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="Start" />
+            </Style>
+            <Style
+                x:Key="ValidationErrorLabelStyle"
+                TargetType="{x:Type Label}">
+                <Setter
+                    Property="Margin"
+                    Value="0,-5" />
+                <Setter
+                    Property="Padding"
+                    Value="25,1,0,2" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ErrorColor}" />
+                <Setter
+                    Property="FontSize"
+                    Value="9" />
+            </Style>
+            <Style
+                TargetType="Label"
+                x:Key="label_white">
+                <Setter
+                    Property="TextColor"
+                    Value="White" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="FontSize"
+                    Value="10" />
+                <Setter
+                    Property="Margin"
+                    Value="0,-7,0,7" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Start" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Center" />
+            </Style>
+            <Style
+                TargetType="Frame"
+                x:Key="frmBigBlue">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource ColorBlueMain}" />
+                <Setter
+                    Property="CornerRadius"
+                    Value="30" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="WidthRequest"
+                    Value="230" />
+                <Setter
+                    Property="Margin"
+                    Value="0,5" />
+                <Setter
+                    Property="Padding"
+                    Value="24,10,24,10" />
+                <Setter
+                    Property="BorderColor"
+                    Value="{StaticResource ColorGray}" />
+            </Style>
+            <Style
+                TargetType="Frame"
+                x:Key="frm_background">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="White" />
+                <Setter
+                    Property="CornerRadius"
+                    Value="50" />
+                <Setter
+                    Property="Padding"
+                    Value="20,20,20,100" />
+                <Setter
+                    Property="Margin"
+                    Value="0,0,0,-100" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="HasShadow"
+                    Value="False" />
+            </Style>
+            <Style
+                TargetType="Frame"
+                x:Key="frm">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="White" />
+                <Setter
+                    Property="CornerRadius"
+                    Value="30" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="52" />
+                <Setter
+                    Property="Padding"
+                    Value="20,0" />
+                <Setter
+                    Property="Margin"
+                    Value="0,-7" />
+            </Style>
+            <Style
+                TargetType="Frame"
+                x:Key="frm1">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="White" />
+                <Setter
+                    Property="CornerRadius"
+                    Value="26" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="52" />
+                <Setter
+                    Property="Padding"
+                    Value="20,0" />
+                <Setter
+                    Property="Margin"
+                    Value="0,3" />
+            </Style>
+
+            <!--Labels-->
+               
+            <Style
+                TargetType="Label"
+                x:Key="header">
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorGray}" />
+                <Setter
+                    Property="Text"
+                    Value="Die Immobilienbewertung mit Foto" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="FontSize"
+                    Value="11" />
+                <Setter
+                    Property="Margin"
+                    Value="0,-28,0,20" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Start" />
+            </Style>
+            <Style
+                TargetType="Label"
+                x:Key="header2">
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorGrayDark}" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="FontSize"
+                    Value="14" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="Center" />
+            </Style>
+            <Style
+                TargetType="Label"
+                x:Key="header3">
+                <Setter
+                    Property="TextColor"
+                    Value="White" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="FontSize"
+                    Value="14" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="Center" />
+            </Style>
+            <Style
+                TargetType="Label"
+                x:Key="label_grey">
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorGrayDark}" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="FontSize"
+                    Value="13" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="Start" />
+            </Style>
+            <Style
+                TargetType="Label"
+                x:Key="label_blue_light">
+                <Setter
+                    Property="TextColor"
+                    Value="#B3C8DF" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="FontSize"
+                    Value="13" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="Start" />
+            </Style>
+            <Style
+                TargetType="Label"
+                x:Key="label_big_blue">
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorBlueMain}" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="FontSize"
+                    Value="24" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Center" />
+            </Style>
+            <Style
+                TargetType="Label"
+                x:Key="text_hour">
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorBlueMain}" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="FontSize"
+                    Value="30" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="End" />
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="End" />
+            </Style>
+            
+            <!-- Buttons -->
+
+            <Style
+                TargetType="Button"
+                x:Key="bttnBigBlue">
+                <Setter
+                    Property="HeightRequest"
+                    Value="120" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource ColorBlueMain}" />
+                <Setter
+                    Property="CornerRadius"
+                    Value="30" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="52" />
+                <Setter
+                    Property="Margin"
+                    Value="20" />
+                <Setter 
+                    Property="TextColor"
+                    Value="white"/>
+                <Setter
+                    Property="BorderColor"
+                    Value="{StaticResource ColorGray}" />
+                <Setter
+                    Property="BorderWidth"
+                    Value="0.1" />
+            </Style>
+            <Style
+                TargetType="Button"
+                x:Key="bttnBigWhite">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="White" />
+                <Setter
+                    Property="CornerRadius"
+                    Value="30" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="120" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorGray}" />
+                <Setter
+                    Property="BorderColor"
+                    Value="{StaticResource ColorGrayLight}" />
+                <Setter
+                    Property="BorderWidth"
+                    Value="1" />
+            </Style>
+            <Style
+                TargetType="Button"
+                x:Key="bttnSmallBlue">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource ColorBlueMain}" />
+                <Setter
+                    Property="CornerRadius"
+                    Value="15" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="CenterAndExpand" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="End" />
+                <Setter
+                    Property="Padding"
+                    Value="46,0" />
+                <Setter
+                    Property="TextColor"
+                    Value="white" />
+                <Setter
+                    Property="BorderColor"
+                    Value="{StaticResource ColorGray}" />
+                <Setter
+                    Property="BorderWidth"
+                    Value="0.1" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="36" />
+            </Style>
+            <Style
+                TargetType="Button"
+                x:Key="bttnTrans">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="Transparent" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="CenterAndExpand" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="Margin"
+                    Value="0,-3" />
+                <Setter
+                    Property="FontSize"
+                    Value="16" />
+                <Setter
+                    Property="TextColor"
+                    Value="white" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="38" />
+            </Style>
+            <Style
+                TargetType="Button"
+                x:Key="bttnSmallCarousel">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="White" />
+                <Setter
+                    Property="CornerRadius"
+                    Value="15" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="Padding"
+                    Value="6,0" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorGray}" />
+                <Setter
+                    Property="BorderColor"
+                    Value="{StaticResource ColorGray}" />
+                <Setter
+                    Property="BorderWidth"
+                    Value="0.1" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="30" />
+                <Setter
+                    Property="WidthRequest"
+                    Value="100" />
+                <Setter
+                    Property="FontSize"
+                    Value="10" />
+            </Style>
+            <Style
+                TargetType="ImageButton"
+                x:Key="arrow">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="Transparent" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="16" />
+                <Setter
+                    Property="Margin"
+                    Value="20,20,-40,0" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Start" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Start" />
+                <Setter
+                    Property="Source"
+                    Value="arrow" />
+            </Style>
+            
+            <!-- Entries -->
+            
+            <Style
+                TargetType="components:CustomEntry"
+                x:Key="entry_frm">
+                <Setter
+                    Property="HideBottomLine"
+                    Value="True" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorGray}" />
+                <Setter
+                    Property="PlaceholderColor"
+                    Value="{StaticResource ColorGray}" />
+                <Setter
+                    Property="FontSize"
+                    Value="16" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+            </Style>
+            
+            <!-- Frames -->
+
+            <Style
+                TargetType="Frame">
+                <Setter
+                    Property="HasShadow"
+                    Value="{StaticResource HasShadow}"/>
+            </Style>
+            
+            <!-- Control Templates -->
+            
+            <ControlTemplate
+                x:Key="LogoTitleView">
+                <StackLayout
+                    HorizontalOptions="FillAndExpand">
+                    <StackLayout
+                        Spacing="0"
+                        Margin="0,0,75,0"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{TemplateBinding BindingContext.PopToRootAsync}" />
+                        </StackLayout.GestureRecognizers>
+                        <Image
+                            WidthRequest="90"
+                            Source="logo_small1" />
+                        <Label
+                            FontSize="11"
+                            Text="Die Immobilienbewertung mit Foto" />
+                    </StackLayout>
+                </StackLayout>
+            </ControlTemplate>
+            <ControlTemplate
+                x:Key="LoadingIndicatorPage">
+                <Grid>
+                    <ContentPresenter />
+                    <StackLayout
+                        BackgroundColor="#A0000000"
+                        IsVisible="{TemplateBinding BindingContext.Busy}">
+                        <ActivityIndicator
+                            AutomationId="IdActivityIndicator"
+                            VerticalOptions="CenterAndExpand"
+                            Color="White"
+                            IsRunning="{TemplateBinding BindingContext.Busy}"
+                            IsVisible="{TemplateBinding BindingContext.Busy}" />
+                    </StackLayout>
+                </Grid>
+            </ControlTemplate>
+            <ControlTemplate
+                x:Key="DismissiblePage">
+                <ContentView>
+                    <Grid>
+                        <StackLayout
+                            Grid.Row="0">
+                            <Frame
+                                Margin="0,0,0,-100"
+                                Padding="0,0,0,100"
+                                BackgroundColor="{StaticResource ColorBlueMain}"
+                                Style="{StaticResource frm_background}">
+                                <StackLayout
+                                    Margin="0,10,0,0">
+                                    <Label
+                                        Style="{StaticResource header3}"
+                                        Text="{TemplateBinding BindingContext.Header}" />
+                                    <Frame
+                                        Margin="0,4,0,-100"
+                                        Style="{StaticResource frm_background}">
+                                        <ContentPresenter />
+                                    </Frame>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                        <!--Make component-->
+                        <StackLayout
+                            BackgroundColor="#A0000000"
+                            IsVisible="{TemplateBinding BindingContext.Busy}">
+                            <ActivityIndicator
+                                AutomationId="IdActivityIndicator"
+                                Color="White"
+                                IsRunning="{TemplateBinding BindingContext.Busy}"
+                                IsVisible="{TemplateBinding BindingContext.Busy}"
+                                VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+                    </Grid>
+                </ContentView>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

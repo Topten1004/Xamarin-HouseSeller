@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Immowert4You.Presentation.Login.Views.LoginPage"
+    xmlns:components="clr-namespace:Immowert4You.Presentation.Common.Components"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="{StaticResource ColorBackground}">
+    <ContentView
+        ControlTemplate="{StaticResource LoadingIndicatorPage}">
+        <StackLayout
+            Padding="0">
+            <StackLayout
+                Orientation="Horizontal">
+                <ImageButton
+                    Style="{StaticResource arrow}"
+                    Command="{Binding PopAsync}"/>
+                <StackLayout
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Start"
+                    Margin="-10,0,0,0">
+                    <Image
+                        Source="logo_small"
+                        HeightRequest="110" />
+                    <Label
+                        Style="{StaticResource header}" />
+                </StackLayout>
+            </StackLayout>
+            <Frame
+                Style="{StaticResource frm_background}">
+                <StackLayout>
+                    <StackLayout
+                        VerticalOptions="CenterAndExpand">
+                        <Frame
+                            Style="{StaticResource frm}"
+                            Margin="0,0,0,-7">
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <components:CustomEntry
+                                    Placeholder="E-Mail*"
+                                    Text="{Binding UserEmail.Value}"
+                                    Style="{StaticResource entry_frm}" />
+                            </StackLayout>
+                        </Frame>
+                        <Label
+                            Text="{Binding UserEmail.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                            Style="{StaticResource ValidationErrorLabelStyle}" />
+                        <Frame
+                            Style="{StaticResource frm}"
+                            Margin="0,-7,0,-7">
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <components:CustomEntry
+                                    Placeholder="Passwort*"
+                                    Style="{StaticResource entry_frm}"
+                                    Text="{Binding UserPassword.Value}"
+                                    IsPassword="True" />
+                            </StackLayout>
+                        </Frame>
+                        <Label
+                            Text="{Binding UserPassword.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                            Style="{StaticResource ValidationErrorLabelStyle}" />
+                    </StackLayout>
+                    <Button
+                        Margin="0,20"
+                        Style="{StaticResource bttnSmallBlue}"
+                        Text="Fortfahren"
+                        VerticalOptions="StartAndExpand"
+                        Command="{Binding Login}" />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentView>
+</ContentPage>

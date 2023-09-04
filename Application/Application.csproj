@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>Immowert4You.Application</RootNamespace>
+    <Configurations>Debug;Release;Local Debug</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Authentications\**" />
+    <Compile Remove="Houses\**" />
+    <EmbeddedResource Remove="Authentications\**" />
+    <EmbeddedResource Remove="Houses\**" />
+    <None Remove="Authentications\**" />
+    <None Remove="Houses\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
+</Project>

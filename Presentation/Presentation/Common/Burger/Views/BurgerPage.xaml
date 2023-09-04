@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<FlyoutPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Immowert4You.Presentation.Home.Views.BurgerPage"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="False">
+    <FlyoutPage.Flyout>
+        <ContentPage
+            IconImageSource="button_menu"
+            Title="Burger">
+            <StackLayout
+                HorizontalOptions="Start"
+                BackgroundColor="White">
+                <StackLayout.Padding>
+                    <OnPlatform
+                        x:TypeArguments="Thickness"
+                        iOS="20,60,20,0"
+                        Android="20,6"/>
+                </StackLayout.Padding>
+                <Image
+                    Source="burger_header"
+                    Aspect="AspectFill"/>
+                <ListView
+                    x:Name="list"
+                    ItemsSource="{Binding MenuItems}"
+                    SeparatorVisibility="None"
+                    ItemSelected="ListView_ItemSelected"
+                    BackgroundColor="White">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout
+                                    Orientation="Horizontal">
+                                    <Label
+                                        TextColor="{StaticResource ColorGrayDark}"
+                                        FontSize="15"
+                                        VerticalOptions="Center"
+                                        Text="{Binding Title}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Label Text="{Binding VersionInfo}" TextColor="Gray" VerticalOptions="EndAndExpand"/>
+            </StackLayout>
+        </ContentPage>
+    </FlyoutPage.Flyout>
+</FlyoutPage>

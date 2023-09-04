@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Immowert4You.Presentation.Properties.Views.Estimate.PendingPropertiesPage"
+    xmlns:components="clr-namespace:Immowert4You.Presentation.Common.Components"
+    NavigationPage.HasNavigationBar="False"
+    IconImageSource="menu_reviews"
+    Title="Bewertungen"
+    BackgroundColor="{StaticResource ColorBackground}"
+    x:Name="page">
+    <ContentView
+        ControlTemplate="{StaticResource DismissiblePage}">
+        <Grid
+            Margin="0,0,0,10"
+            RowDefinitions="*,*">
+            <StackLayout
+                Grid.Row="0">
+                <Label
+                    IsVisible="{Binding Properties.Count, Converter={StaticResource IsEmptyArrayToBooleanConverter}}"
+                    Style="{StaticResource label_grey}"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Keine Immobilie zur Bewertung" />
+                <ListView
+                    x:Name="propertiesList"
+                    ItemsSource="{Binding Properties}"
+                    HasUnevenRows="True"
+                    SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
+                                    Style="{StaticResource frm1}"
+                                    Padding="0">
+                                    <StackLayout
+                                        Orientation="Horizontal">
+                                        <Frame
+                                            Style="{StaticResource frm1}"
+                                            Margin="0,0,-20,0"
+                                            HorizontalOptions="FillAndExpand"
+                                            Padding="15,0,0,0">
+                                            <StackLayout
+                                                Padding="4">
+                                                <StackLayout
+                                                    Orientation="Horizontal">
+                                                    <Label
+                                                        IsVisible="{Binding IsUrgent}"
+                                                        VerticalOptions="Center"
+                                                        FontSize="30"
+                                                        TextColor="{StaticResource ColorBlueMain}"
+                                                        Text="!"/>
+                                                    <StackLayout>
+                                                        <Label
+                                                        Style="{StaticResource label_grey}"
+                                                        Text="{Binding RemoveFromBrokerAt, Converter={StaticResource DiplayedDateTimeToRemainDateTimeConverter}, StringFormat='{0:hh\\:mm}'}"
+                                                        TextColor="{StaticResource ColorBlueMain}"
+                                                        Margin="0,5,0,0" />
+                                                        <StackLayout
+                                                            Margin="0,-7,-5,0"
+                                                            Orientation="Horizontal">
+                                                        <Label
+                                                            Style="{StaticResource label_grey}"
+                                                            Text="{Binding ZipCode}"
+                                                            FontSize="10" />
+                                                        <Label
+                                                            Style="{StaticResource label_grey}"
+                                                            Text="{Binding City}"
+                                                            FontSize="10"/>
+                                                        </StackLayout>
+
+                                                    </StackLayout>
+                                                    <StackLayout
+                                                    Margin="0,-7,-5,0"
+                                                    Orientation="Horizontal">
+                                                        <Label
+                                                            Style="{StaticResource label_grey}"
+                                                            Text="{Binding Address}"
+                                                            FontSize="10" />
+                                                        <Label
+                                                            Style="{StaticResource label_grey}"
+                                                            Text="{Binding HouseNumber}"
+                                                        FontSize="10" />
+                                                    </StackLayout>
+                                                </StackLayout>
+                                                
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame
+                                            Style="{StaticResource frm1}"
+                                            Margin="-8,0,-2,0"
+                                            Padding="10,0,10,0"
+                                            CornerRadius="0"
+                                            HorizontalOptions="End"
+                                            BackgroundColor="{StaticResource ColorBlueMain}">
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding Source={x:Reference page}, Path=BindingContext.AcceptProperty}"
+                                                    CommandParameter="{Binding .}"/>
+                                            </Frame.GestureRecognizers>
+                                            <Label
+                                                Text="Annehmen"
+                                                Style="{StaticResource label_grey}"
+                                                TextColor="White" />
+                                        </Frame>
+                                        <Frame
+                                            Style="{StaticResource frm1}"
+                                            Margin="-5,0"
+                                            Padding="8,0,16,0"
+                                            HorizontalOptions="End"
+                                            CornerRadius="0"
+                                            BackgroundColor="{StaticResource ColorGrayDark}">
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding Source={x:Reference page}, Path=BindingContext.RejectProperty}"
+                                                    CommandParameter="{Binding .}" />
+                                            </Frame.GestureRecognizers>
+                                            <Label
+                                                Text="Ablehnen"
+                                                Style="{StaticResource label_grey}"
+                                                TextColor="White" />
+                                        </Frame>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout
+                Grid.Row="1"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="End">
+                <Label
+                    HorizontalOptions="End"
+                    VerticalOptions="EndAndExpand"
+                    Style="{StaticResource label_grey}"
+                    Text="Anfragenstopp"
+                    FontSize="16" />
+                <Switch
+                    IsToggled="{Binding IsActive, Converter={StaticResource InvertedBoolConverter}}"/>
+            </StackLayout>
+        </Grid>
+    </ContentView>
+</ContentPage>

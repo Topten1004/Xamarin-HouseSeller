@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Immowert4You.Presentation.Properties.Views.Manage.ArchivedPropertiesPage"
+    xmlns:components="clr-namespace:Immowert4You.Presentation.Common.Components"
+    BackgroundColor="{StaticResource ColorBackground}"
+    IconImageSource="menu_archive"
+    Title="{Binding Header}"
+    x:Name="page">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style
+                TargetType="Button"
+                x:Key="bttnSmallWhite">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="White" />
+                <Setter
+                    Property="CornerRadius"
+                    Value="15" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="Padding"
+                    Value="6,0" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorGrayDark}" />
+                <Setter
+                    Property="BorderColor"
+                    Value="{StaticResource ColorGrayDark}" />
+                <Setter
+                    Property="BorderWidth"
+                    Value="0.1" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="30" />
+                <Setter
+                    Property="WidthRequest"
+                    Value="82" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentView
+        ControlTemplate="{StaticResource DismissiblePage}">
+        <StackLayout>
+            <StackLayout
+                Padding="-20,0,-20,0"
+                Orientation="Horizontal"
+                HorizontalOptions="CenterAndExpand">
+                <Button
+                    x:Name="btnCrsel1"
+                    Style="{StaticResource bttnSmallCarousel}"
+                    Clicked="btnCrsel_Clicked"
+                    Text="NEU" />
+                <Button
+                    x:Name="btnCrsel2"
+                    Style="{StaticResource bttnSmallCarousel}"
+                    Clicked="btnCrsel_Clicked"
+                    Text="OFFEN" />
+                <Button
+                    x:Name="btnCrsel3"
+                    Style="{StaticResource bttnSmallCarousel}"
+                    Clicked="btnCrsel_Clicked"
+                    FontSize="9"
+                    Text="ABGESCHLOSSEN" />
+            </StackLayout>
+            <ListView
+                x:Name="propertiesList"
+                ItemsSource="{Binding Properties}"
+                HasUnevenRows="True"
+                SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout
+                                Padding="0,10">
+                                <StackLayout
+                                    Orientation="Horizontal">
+                                    <StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Source={x:Reference page}, Path=BindingContext.NavigateToEstimatePage}"
+                                                CommandParameter="{Binding .}"/>
+                                        </StackLayout.GestureRecognizers>
+                                        <StackLayout
+                                            Orientation="Horizontal">
+                                            <Label
+                                                Style="{StaticResource label_grey}"
+                                                FontSize="13"
+                                                Text="Datum" />
+                                            <Label
+                                                Style="{StaticResource text_hour}"
+                                                FontSize="13"
+                                                Text="{Binding DisplayedToBroker, StringFormat='{0:dd.MM.yyyy}'}" />
+                                        </StackLayout>
+                                        <StackLayout
+                                            Orientation="Horizontal">
+                                            <Label
+                                                Style="{StaticResource label_grey}"
+                                                FontSize="13"
+                                                Text="{Binding ZipCode}" />
+                                            <Label
+                                                Style="{StaticResource label_grey}"
+                                                FontSize="13"
+                                                Text="{Binding City}" />
+                                            <Label
+                                                Style="{StaticResource label_grey}"
+                                                FontSize="13"
+                                                Text="{Binding Address}" />
+                                            <Label
+                                                Style="{StaticResource label_grey}"
+                                                FontSize="13"
+                                                Text="{Binding HouseNumber}" />
+                                        </StackLayout>
+                                        <Label
+                                            TextColor="{StaticResource ColorBlueMain}"
+                                            FontSize="13"
+                                            Text="{Binding Price, StringFormat='€ {0}'}" />
+                                        <StackLayout
+                                            Orientation="Horizontal">
+                                            <Label
+                                                Style="{StaticResource label_grey}"
+                                                FontSize="13"
+                                                Text="{Binding FirstName}" />
+                                            <Label
+                                                Style="{StaticResource label_grey}"
+                                                FontSize="13"
+                                                Text="{Binding LastName}" />
+                                            <Label
+                                                Style="{StaticResource text_hour}"
+                                                FontSize="13"
+                                                Text="{Binding PhoneNumber}" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <Button
+                                        x:Name="rightBtn"
+                                        HorizontalOptions="EndAndExpand"
+                                        Style="{StaticResource bttnSmallWhite}"
+                                        BackgroundColor="{Binding HasContract, Converter={StaticResource IsOwnMessageToBackgroundColorConverter}}"
+                                        VerticalOptions="Center"
+                                        FontSize="12"
+                                        IsVisible="{Binding Source={x:Reference page}, Path=BindingContext.ClosedOnly}"
+                                        Text="{Binding HasContract, Converter={StaticResource BooleanToHasContractString}}" />
+                                </StackLayout>
+                                <StackLayout
+                                    Margin="0,5">
+                                    <Label Text="{Binding Note}"/>
+                                </StackLayout>
+                                <StackLayout
+                                    Margin="0,10,0,0"
+                                    x:Name="botBtnsStack"
+                                    Orientation="Horizontal"
+                                    IsVisible="{Binding Source={x:Reference page}, Path=BindingContext.ClosedOnly, Converter={StaticResource InvertedBoolConverter}}">
+                                    <Button
+                                        Style="{StaticResource bttnSmallWhite}"
+                                        BackgroundColor="{Binding HasMet, Converter={StaticResource IsOwnMessageToBackgroundColorConverter}}"
+                                        Text="Termin"
+                                        Command="{Binding Source={x:Reference page}, Path=BindingContext.SetHasMet}"
+                                        CommandParameter="{Binding .}"/>
+                                    <Button
+                                        Style="{StaticResource bttnSmallWhite}"
+                                        FontSize="12"
+                                        Text="Kein Vertrag"
+                                        Command="{Binding Source={x:Reference page}, Path=BindingContext.SetHasNoContract}" 
+                                        CommandParameter="{Binding .}"/>
+                                    <Button
+                                        Style="{StaticResource bttnSmallWhite}"
+                                        Text="Vertrag"
+                                        Command="{Binding Source={x:Reference page}, Path=BindingContext.SetHasContract}"
+                                        CommandParameter="{Binding .}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentView>
+</ContentPage>

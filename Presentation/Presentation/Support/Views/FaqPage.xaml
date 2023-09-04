@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<bases:BaseContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:bases="clr-namespace:Immowert4You.Presentation.Common.Bases.Views"
+    x:Class="Immowert4You.Presentation.Support.Views.FaqPage"
+    xmlns:components="clr-namespace:Immowert4You.Presentation.Common.Components"
+    BackgroundColor="{StaticResource ColorBackground}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style
+                TargetType="Label"
+                x:Key="FAQfont">
+                <Setter
+                    Property="FontSize"
+                    Value="15" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentView
+        ControlTemplate="{StaticResource DismissiblePage}">
+        <ScrollView>
+            <StackLayout
+            Margin="10">
+            <Label 
+                Style="{StaticResource FAQfont}"
+                FontAttributes="Bold"
+                Text="Immowert4you ist eine Immobilienbewertungs-App bei der Sie anhand Ihrer eingegebenen Daten und Fotos eine gratis Immobillienbewertung bekommen. Ihre individuelle Bewertung erstellt ein regionaler Immobilienexperte, welcher in Ihrem Bezirk tätig ist. Denn dieser kennt die Besonderheiten vor Ort und kann die Marktsituation richtig einschätzen. Zusätzlich bekommen Sie im Bereich 'Ihre IMMOWERT
+Steigerung' hilfreiche Tipps, wie Sie Ihre Immobilie im verkaufsfall besser verkaufen können."/>
+            <Label 
+                FontAttributes="Bold"
+                    Style="{StaticResource FAQfont}"
+                    TextColor="{StaticResource ColorGrayDark}"
+                Text="•	Für welche Immobilien kann ich eine Bewertung durchführen?"/>
+            <Label
+                    Style="{StaticResource FAQfont}"
+                    FontAttributes="None"
+                Text="Es können für Wohnungen, Einfamilienhäuser, Mehrfamilienhäuser und Grundstücke Bewertungen durchgeführt werden." />
+            <Label
+                    Style="{StaticResource FAQfont}"
+                    FontAttributes="None"
+                    Text="Sollte Ihre Immobilienart nicht angegeben sein, so können Sie auf office@immowert4you.app anfragen, ob für Ihre Immobilie eine Bewertung durchgeführt werden kann. Wenn für Ihre spezielle Immobilie eine Bewertung durchgeführt wird, ist diese für Sie ebenfalls kostenlos." />
+            <Label
+                    Style="{StaticResource FAQfont}"
+                    TextColor="{StaticResource ColorGrayDark}"
+                FontAttributes="Bold"
+                Text="•	Für welche Immobilien kann ich keine Bewertung durchführen? " />
+            <Label
+                    Style="{StaticResource FAQfont}"
+                    FontAttributes="None"
+                    Text="Für Gewerbeimmobilien, Büros, Hotels, Kirchen sowie andere Spezialimmobilien können keine Bewertungen durchgeführt werden." />
+            <Label
+                    Style="{StaticResource FAQfont}"
+                    TextColor="{StaticResource ColorGrayDark}"
+                FontAttributes="Bold"
+                Text="•	Ist die Bewertung auch wirklich kostenlos?" />
+            <Label
+                    Style="{StaticResource FAQfont}"
+                    FontAttributes="None"
+                    Text="Ja, die Bewertung ist für Sie komplett kostenlos." />
+            <Label
+                    Style="{StaticResource FAQfont}"
+                    TextColor="{StaticResource ColorGrayDark}"
+                FontAttributes="Bold"
+                Text="•	Wie wird der Wert der Immobilie ermittelt?" />
+            <Label
+                    Style="{StaticResource FAQfont}"
+                    FontAttributes="None"
+                    Text="Anhand Ihrer eingegebenen Daten und gemachten Fotos wird ein regionaler Immobilienexperte die Bewertung durchführen. Dieser kennt sich in Ihrer Region bestens aus und weiß, wo, wie viel derzeit bezahlt wird." />
+            <Label
+                    Style="{StaticResource FAQfont}"
+                    TextColor="{StaticResource ColorGrayDark}"
+                FontAttributes="Bold"
+                Text="•	Kann überall in Österreich eine Bewertung durchgeführt werden?" />
+            <Label
+                    Style="{StaticResource FAQfont}"
+                    FontAttributes="None"
+                    Text="Derzeit noch nicht. Bis Ende 2022 wird es aber möglich sein. Aktuell können in folgenden Bundesländer Bewertungen durchgeführt werden: Niederösterreich, Wien, Burgenland und Oberösterreich." />
+            <Label
+                    Style="{StaticResource FAQfont}"
+                    TextColor="{StaticResource ColorGrayDark}"
+                FontAttributes="Bold"
+                Text="•	Was bedeutet die 'durchschnittliche
+                Bewertungsdauer'?" />
+            <Label
+                    Style="{StaticResource FAQfont}"
+                    FontAttributes="None"
+                    Text="Diese Zeitangabe gibt an, wie lange im Österreichweiten Durchschnitt eine Bewertung für diese Immobilienart dauert. " />
+            <Label
+                    Style="{StaticResource FAQfont}"
+                    TextColor="{StaticResource ColorGrayDark}"
+                FontAttributes="Bold"
+                Text="•	Wie lange kann eine Immobilienbewertung dauern?" />
+            <Label
+                    Margin="0, 0, 0, 30"
+                    Style="{StaticResource FAQfont}"
+                    FontAttributes="None"
+                    Text="Da die Bewertung von einem regionalen Experten durchgeführt wird, kann diese bis zu zwei Werktage dauern. In der Regel bekommen Sie Ihre Bewertung aber innerhalb von ein paar Stunden (In den Bewertungszeiten)." />
+            </StackLayout>
+        </ScrollView>
+    </ContentView>
+</bases:BaseContentPage>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Immowert4You.Presentation.Login.Views.RegisterPage"
+    xmlns:components="clr-namespace:Immowert4You.Presentation.Common.Components"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="{StaticResource ColorBackground}">
+    <ContentView
+        ControlTemplate="{StaticResource LoadingIndicatorPage}">
+        <StackLayout
+            Padding="0">
+            <StackLayout
+                Orientation="Horizontal">
+                <ImageButton
+                    Style="{StaticResource arrow}"
+                    Command="{Binding PopAsync}" />
+                <StackLayout
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Start"
+                    Margin="-24,0,0,0">
+                    <Image
+                        Source="logo_small"
+                        HeightRequest="110" />
+                    <Label
+                        Style="{StaticResource header}" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout
+                VerticalOptions="FillAndExpand">
+                <Frame
+                    Style="{StaticResource frm_background}">
+                    <ScrollView>
+                    <StackLayout
+                            VerticalOptions="FillAndExpand">
+                            <Frame
+                                Style="{StaticResource frm}">
+                                <StackLayout
+                                    Orientation="Horizontal">
+                                    <components:CustomEntry
+                                        Placeholder="Name*"
+                                        Style="{StaticResource entry_frm}"
+                                        Text="{Binding UserName.Value}" />
+                                </StackLayout>
+                            </Frame>
+                            <Label
+                                Text="{Binding UserName.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                Style="{StaticResource ValidationErrorLabelStyle}" />
+                            <Frame
+                                Style="{StaticResource frm}"
+                                >
+                                <StackLayout
+                                    Orientation="Horizontal">
+                                    <components:CustomEntry
+                                        Placeholder="Nachname*"
+                                        Style="{StaticResource entry_frm}"
+                                        Text="{Binding UserSurname.Value}" />
+                                </StackLayout>
+                            </Frame>
+                            <Label
+                                Text="{Binding UserSurname.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                Style="{StaticResource ValidationErrorLabelStyle}" />
+                            <Frame
+                                Style="{StaticResource frm}">
+                                <StackLayout
+                                    Orientation="Horizontal">
+                                    <components:CustomEntry
+                                        Placeholder="E-Mail*"
+                                        Style="{StaticResource entry_frm}"
+                                        Text="{Binding UserEmail.Value}" />
+                                </StackLayout>
+                            </Frame>
+                            <Label
+                                Text="{Binding UserEmail.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                Style="{StaticResource ValidationErrorLabelStyle}" />
+                            <Frame
+                                Style="{StaticResource frm}">
+                                <StackLayout
+                                    Orientation="Horizontal">
+                                    <components:CustomEntry
+                                        Placeholder="Passwort*"
+                                        Style="{StaticResource entry_frm}"
+                                        IsPassword="True"
+                                        Text="{Binding UserPassword.Value}" />
+                                </StackLayout>
+                            </Frame>
+                            <Label
+                                Text="{Binding UserPassword.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                Style="{StaticResource ValidationErrorLabelStyle}" />
+                            <Frame
+                                Style="{StaticResource frm}">
+                                <StackLayout
+                                    Orientation="Horizontal">
+                                    <components:CustomEntry
+                                        Placeholder="Passwort wiederholen*"
+                                        Style="{StaticResource entry_frm}"
+                                        IsPassword="True"
+                                        Text="{Binding UserRepeatPassword.Value}" />
+                                </StackLayout>
+                            </Frame>
+                            <Label
+                                Text="{Binding UserRepeatPassword.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                Style="{StaticResource ValidationErrorLabelStyle}" />
+                            <Button
+                                Style="{StaticResource bttnSmallBlue}"
+                                Text="Fortfahren"
+                                VerticalOptions="End"
+                                Command="{Binding Register}" />
+                        </StackLayout>
+                    </ScrollView>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentView>
+</ContentPage>

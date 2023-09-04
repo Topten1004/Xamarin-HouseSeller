@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<bases:BaseContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:bases="clr-namespace:Immowert4You.Presentation.Common.Bases.Views"
+    x:Class="Immowert4You.Presentation.Support.Views.ContactPage"
+    xmlns:components="clr-namespace:Immowert4You.Presentation.Common.Components"
+    BackgroundColor="{StaticResource ColorBackground}">
+    <ContentView
+        ControlTemplate="{StaticResource DismissiblePage}">
+        <StackLayout>
+            <Label
+                HorizontalTextAlignment="Center"
+                Text="Schreiben Sie uns einfach eine Nachricht und wir werden Ihr Anliegen bestmöglich bearbeiten." />
+            <Frame
+                Style="{StaticResource frm1}">
+                <StackLayout
+                    Orientation="Horizontal">
+                    <components:CustomEntry
+                        Placeholder="Vorname*"
+                        HorizontalOptions="FillAndExpand"
+                        Text="{Binding Name}"
+                        TextColor="{StaticResource ColorGrayDark}"
+                        Style="{StaticResource entry_frm}" />
+                </StackLayout>
+            </Frame>
+            <Frame
+                Style="{StaticResource frm1}">
+                <StackLayout
+                    Orientation="Horizontal">
+                    <components:CustomEntry
+                        Placeholder="Nachname*"
+                        HorizontalOptions="FillAndExpand"                       
+                        Text="{Binding Surname}"
+                        Style="{StaticResource entry_frm}" />
+                </StackLayout>
+            </Frame>
+            <Frame
+                Style="{StaticResource frm1}">
+                <StackLayout
+                    Orientation="Horizontal">
+                    <components:CustomEntry
+                        Placeholder="E-Mail-Adresse*"
+                        HorizontalOptions="FillAndExpand"
+                        Text="{Binding EmailAddress}"
+                        Style="{StaticResource entry_frm}" />
+                </StackLayout>
+            </Frame>
+            <Frame
+                Style="{StaticResource frm1}"
+                VerticalOptions="FillAndExpand">
+                <StackLayout
+                    Orientation="Horizontal">
+                    <Editor
+                        Margin="0,5"
+                        VerticalOptions="FillAndExpand"
+                        Placeholder="Nachricht*"
+                        HorizontalOptions="FillAndExpand"
+                        Text="{Binding Message}"
+                        Style="{StaticResource entry_frm}" />
+                </StackLayout>
+            </Frame>
+            <Button
+                Style="{StaticResource bttnSmallBlue}"
+                Text="SENDEN"
+                VerticalOptions="End"
+                Margin="0,20"
+                Command="{Binding SendMessage}" />
+        </StackLayout>
+    </ContentView>
+</bases:BaseContentPage>

@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<bases:BaseContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:bases="clr-namespace:Immowert4You.Presentation.Common.Bases.Views"
+    x:Class="Immowert4You.Presentation.Properties.Views.Create.PropertyRoomsPage"
+    BackgroundColor="{StaticResource ColorBackground}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style
+                TargetType="ImageButton"
+                x:Key="bttnSmallBlue">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource ColorBlueMain}" />
+                <Setter
+                    Property="CornerRadius"
+                    Value="15" />
+                <Setter
+                    Property="Padding"
+                    Value="5" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="35" />
+                <Setter
+                    Property="WidthRequest"
+                    Value="35" />
+            </Style>
+            <Style
+                TargetType="Button"
+                x:Key="bttnSmallWhite">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="White" />
+                <Setter
+                    Property="CornerRadius"
+                    Value="15" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="CenterAndExpand" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="EndAndExpand" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="Padding"
+                    Value="10,0" />
+                <Setter
+                    Property="TextColor"
+                    Value="{StaticResource ColorGray}" />
+                <Setter
+                    Property="BorderColor"
+                    Value="Gray" />
+                <Setter
+                    Property="BorderWidth"
+                    Value="0.1" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="35" />
+                <Setter
+                    Property="WidthRequest"
+                    Value="132" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentView
+        ControlTemplate="{StaticResource DismissiblePage}">
+        <StackLayout>
+            <StackLayout
+                VerticalOptions="StartAndExpand">
+                <Label
+                    Text="Machen Sie jetzt bitte Fotos Ihrer Immobilie"
+                    TextColor="{StaticResource ColorBlueMain}"
+                    Margin="0,0,0,20"
+                    HorizontalOptions="Center" />
+                <Label
+                    Text="Es sind mindestens 2 Fotos Ihrer Immobilie erforderlich"
+                    IsVisible="{Binding IsWarningVisible}"
+                    Style="{StaticResource ValidationErrorLabelStyle}"
+                    Margin="0,-5,0,0" />
+                <ListView
+                    ItemsSource="{Binding Photos}"
+                    Margin="20,0"
+                    SeparatorVisibility="None"
+                    SelectionMode="None"
+                    HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    Padding="0,5">
+                                    <Button
+                                        BackgroundColor="{Binding ButtonColor}"
+                                        TextColor="{Binding FontColor}"
+                                        Style="{StaticResource bttnSmallWhite}"
+                                        Text="{Binding Title}" />
+                                    <ImageButton
+                                        Style="{StaticResource bttnSmallBlue}"
+                                        Source="add_media"
+                                        Command="{Binding PickPhotoFromGallery}"
+                                        CommandParameter="{Binding .}"/>
+                                    <ImageButton
+                                        Style="{StaticResource bttnSmallBlue}"
+                                        Source="add_photo"
+                                        Command="{Binding TakePhoto}"
+                                        CommandParameter="{Binding .}"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackLayout
+                    HorizontalOptions="Fill">
+                    <Button
+                        Style="{StaticResource bttnSmallBlue}"
+                        Text="WEITER"
+                        Margin="0,20"
+                        WidthRequest="140"
+                        CornerRadius="15"
+                        TextColor="White"
+                        HorizontalOptions="Center"
+                        VerticalOptions="EndAndExpand"
+                        Command="{Binding NavigateToUserFeedback}" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentView>
+</bases:BaseContentPage>

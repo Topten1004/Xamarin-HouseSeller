@@ -1,0 +1,218 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <RootNamespace>Immowert4You.Presentation</RootNamespace>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <Configurations>Debug;Local Debug;Release</Configurations>
+	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Local Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Common\Assets\faq.html" />
+    <None Remove="Common\Assets\impressum.html" />
+    <None Remove="Common\Assets\policy_partner.html" />
+    <None Remove="Common\Assets\policy_user.html" />
+    <None Remove="Common\Assets\terms.html" />
+    <None Remove="Common\Mocked\BigCities.json" />
+    <None Remove="Xam.Plugin.Media" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Common\Assets\faq.html" />
+    <EmbeddedResource Include="Common\Assets\impressum.html" />
+    <EmbeddedResource Include="Common\Assets\policy_partner.html" />
+    <EmbeddedResource Include="Common\Assets\policy_user.html" />
+    <EmbeddedResource Include="Common\Assets\terms.html" />
+    <EmbeddedResource Include="Common\Mocked\Data\BigCities.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Plugin.FirebasePushNotification" Version="3.4.35" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\Application.csproj" />
+    <ProjectReference Include="..\..\Service\Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Common\Mocked\BigCities.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Common\Mocked\MockedDataManager.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Common\Mocked\MockedDataManager.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="Propertíes\Views\Create\Modals\PropertySentToBrokerModal.xaml.cs">
+      <DependentUpon>PropertySentToBrokerModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Propertíes\Views\Create\Modals\PropertySentModal.xaml.cs">
+      <DependentUpon>PropertySentModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Propertíes\Views\Create\PropertyTypePage.xaml.cs">
+      <DependentUpon>PropertyTypePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Propertíes\Views\Estimate\EstimatePropertyPage.xaml.cs">
+      <DependentUpon>EstimatePropertyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Chats\Views\ChatPage.xaml.cs">
+      <DependentUpon>ChatPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Propertíes\Views\Create\PropertyInfoPage.xaml.cs">
+      <DependentUpon>PropertyInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Propertíes\Views\Create\Extras\PropertyExtraInfoPage.xaml.cs">
+      <DependentUpon>PropertyExtraInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Propertíes\Views\Create\Extras\PropertyExtraRoomsPage.xaml.cs">
+      <DependentUpon>PropertyExtraRoomsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Propertíes\Views\Create\PropertyRoomsPage.xaml.cs">
+      <DependentUpon>PropertyRoomsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Propertíes\Views\Create\PropertySubcategoryPage.xaml.cs">
+      <DependentUpon>PropertySubcategoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Propertíes\Views\Increase\ImprovementsListPage.xaml.cs">
+      <DependentUpon>ImprovementsListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Propertíes\Views\Manage\ArchivedPropertiesPage.xaml.cs">
+      <DependentUpon>ArchivedPropertiesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Brokers\Views\BrokerPointsPage.xaml.cs">
+      <DependentUpon>BrokerPointsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Propertíes\Views\Estimate\PendingPropertiesPage.xaml.cs">
+      <DependentUpon>PendingPropertiesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Propertíes\Views\Increase\IncreasePropertyValue.xaml.cs">
+      <DependentUpon>IncreasePropertyValue.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Propertíes\Views\Create\PropertyAddressPage.xaml.cs">
+      <DependentUpon>PropertyAddressPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Propertíes\Views\Create\PropertySummaryPage.xaml.cs">
+      <DependentUpon>PropertySummaryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Propertíes\Views\Expose\ExposedPropertyPage.xaml.cs">
+      <DependentUpon>ExposedPropertyPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Propertíes\Views\Create\Modals\PhoneNumberModal.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Propertíes\Views\Create\Modals\PropertySentToBrokerModal.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Propertíes\Views\Create\Modals\PropertySentModal.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Propertíes\Views\Create\Modals\TooManyPropertiesModal.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Propertíes\Views\Estimate\EstimatePropertyPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Common\Bases\Views\BaseContentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Common\Tabs\UserTabbedPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Propertíes\Views\Increase\ImprovementsListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Support\Views\ContactPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Support\Views\FaqPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Support\Views\HtmlDocumentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Support\Views\TermsOfUsePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Common\Tabs\BrokerTabbedPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Common\Burger\Views\BurgerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Propertíes\Views\Create\PropertyTypePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Account\Views\BrokerLoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Chats\Views\ChatPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Propertíes\Views\Manage\ArchivedPropertiesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Brokers\Views\BrokerPointsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Propertíes\Views\Estimate\PendingPropertiesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Propertíes\Views\Create\PropertyInfoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Propertíes\Views\Create\Extras\PropertyExtraInfoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Propertíes\Views\Create\Extras\PropertyExtraRoomsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Propertíes\Views\Create\PropertyRoomsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Propertíes\Views\Create\PropertySubcategoryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Propertíes\Views\Create\PropertyAddressPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Propertíes\Views\Create\PropertySummaryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Propertíes\Views\Increase\IncreasePropertyValue.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Propertíes\Views\Expose\ExposedPropertyPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Account\Views\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Account\Views\RegisterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

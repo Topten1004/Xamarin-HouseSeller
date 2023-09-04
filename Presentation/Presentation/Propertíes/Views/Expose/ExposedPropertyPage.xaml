@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Immowert4You.Presentation.Properties.Views.Expose.ExposedPropertyPage"
+    Title="Bewertung"
+    IconImageSource="thumbnail_Bewertung">
+    <ContentView
+        ControlTemplate="{StaticResource DismissiblePage}">
+        <StackLayout>
+            <Label
+                IsVisible="{Binding IsVerificationAvailable, Converter={StaticResource InvertedBoolConverter}}"
+                Text="Noch keine Bewertung erhalten"
+                HorizontalTextAlignment="Center" />
+            <StackLayout
+                IsVisible="{Binding IsVerificationAvailable}">
+                <StackLayout
+                    IsVisible="{Binding User.PhoneNumberConfirmed, Converter={StaticResource InvertedBoolConverter}}">
+                    <Entry
+                        Placeholder="Code von SMS"
+                        Text="{Binding Code}" />
+                    <Button
+                        Style="{StaticResource bttnBigBlue}"
+                        Text="Senden"
+                        Command="{Binding SendVerificationCode}" />
+                </StackLayout>
+                <ScrollView>
+                    <StackLayout
+                        IsVisible="{Binding User.PhoneNumberConfirmed}">
+                        <Label
+                            FontSize="18"
+                            TextColor="{StaticResource ColorBlueMain}"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Indikative Wertermittlung" />
+                        <Label
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Ihre Wertermittlung wurde durchgeführt von der Firma" />
+                        <Label
+                            FontSize="18"
+                            HorizontalOptions="CenterAndExpand"
+                            TextColor="{StaticResource ColorBlueMain}"
+                            Text="{Binding Property.CompanyName}" />
+                        <Image
+                            Margin="0,5"
+                            HeightRequest="150"
+                            Source="{Binding Property.Logo}" />
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                FontSize="18"
+                                Text="Indikativer Marktwert*" />
+                            <Label
+                                FontSize="18"
+                                TextColor="{StaticResource ColorBlueMain}"
+                                Text="{Binding Property.Price, StringFormat='€ {0:N0}.-'}" />
+                        </StackLayout>
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                Text="Preisspanne*" />
+                            <Label
+                                Text="{Binding MinPropertyPrice, StringFormat='€ {0:N0}.-'}" />
+                            <Label
+                                Text="bis" />
+                            <Label
+                                Text="{Binding MaxPropertyPrice, StringFormat='€ {0:N0}.-'}"/>
+                        </StackLayout>
+                        
+                        <Label
+                            Text="*Bei dieser kostenlosen Wertermittlung handelt es sich lediglich um einen Richtwert, der auf den vom User bekannt gegebenen Daten beruht und von der Annahme ausgeht, dass alle rechtlich erforderlichen behördlichen Bewilligungen und Genehmigungen vorliegen. Weder der Immobilienmakler noch Immowert4you haften für die Richtigkeit dieser Wertermittlung." />
+                        <StackLayout>
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label
+                                    TextColor="{StaticResource ColorBlueMain}"
+                                    Text="{Binding Property.ZipCode}" />
+                                <Label
+                                    TextColor="{StaticResource ColorBlueMain}"
+                                    Text="{Binding Property.City}" />
+                            </StackLayout>
+                            <StackLayout
+                                Margin="0,-7,-5,0"
+                                Orientation="Horizontal">
+                                <Label
+                                    TextColor="{StaticResource ColorBlueMain}"
+                                    Text="{Binding Property.Address}" />
+                                <Label
+                                    TextColor="{StaticResource ColorBlueMain}"
+                                    Text="{Binding Property.HouseNumber}" />
+                            </StackLayout>
+                            <CollectionView
+                                Margin="0,10,0,20"
+                                HeightRequest="200"
+                                ItemsSource="{Binding Property.Photos}"
+                                ItemsLayout="HorizontalGrid, 1"
+                                HorizontalOptions="FillAndExpand">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Image
+                                            Margin="5,0"
+                                            Source="{Binding .}" />
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <StackLayout>
+                                <Grid>
+                                    <StackLayout
+                                        Grid.Column="0">
+                                        <Label
+                                            Text="Typ:" />
+                                        <Label
+                                            Text="Grundstücksgröße:" />
+                                        <Label
+                                            Text="Wohnfläche:" />
+                                        <Label
+                                            Text="Baujahr:" />
+                                        <Label
+                                            Text="Unterkellert:" />
+                                        <Label
+                                            Text="Stockwerk:" />
+                                        <Label
+                                            Text="Lift:" />
+                                        <Label
+                                            Text="Zimmeranzahl:" />
+                                        <Label
+                                            Text="Zustand:" />
+                                    </StackLayout>
+                                    <StackLayout
+                                        Grid.Column="1">
+                                        <Label
+                                            Text="{Binding Property.SubCategory}" />
+                                        <Label
+                                            Text="{Binding Property.Size, StringFormat='{0} m²'}" />
+                                        <Label
+                                            Text="{Binding Property.LivingSurface, StringFormat='{0} m²'}" />
+                                        <Label
+                                            Text="{Binding Property.YearOfBuilt}" />
+                                        <Label
+                                            Text="{Binding Property.HasBasement, Converter={StaticResource BooleanToYesNoConverter}}" />
+                                        <Label
+                                            Text="{Binding Property.Floors}" />
+                                        <Label
+                                            Text="{Binding Property.HasLift, Converter={StaticResource BooleanToYesNoConverter}}" />
+                                        <Label
+                                            Text="{Binding Property.Rooms}" />
+                                        <Label
+                                            Text="{Binding Property.ConditionRate, StringFormat='{0}/10'}" />
+                                    </StackLayout>
+                                </Grid>
+                                <!--<Label
+                        Text="{Binding Property.Floors}" />
+                    <Label
+                        Text="{Binding Property.HasBalcony}" />
+                    <Label
+                        Text="{Binding Property.HasLoggia}" />
+                    <Label
+                        Text="{Binding Property.HasGarden}" />
+                    <Label
+                        Text="{Binding Property.HasCarport}" />
+                    <Label
+                        Text="{Binding Property.HasGarage}" />
+                    <Label
+                        Text="{Binding Property.HasParking}" />
+                    <Label
+                        Text="{Binding Property.HasBasementCloset}" />
+                    <Label
+                        Text="{Binding Property.HasEnergyCertificate}" />
+                    <Label
+                        Text="{Binding Property.HeatingSystem}" />
+                    <Label
+                        Text="{Binding Property.IsOpenOffert}" />
+                    <Label
+                        Text="{Binding Property.MonthlyCosts}" />
+                    <Label
+                        Text="{Binding Property.Extras}" />-->
+                            </StackLayout>
+                        </StackLayout>
+                        
+                        <Label
+                            Text="Da jede Immobilie individuell ist, was Lage, Ausstattung und sonstige spezielle Merkmale betrifft, kann der ermittelte Marktwert vom tatsächlichen Marktwert abweichen. Um für Sie eine genauere Wertermittlung durchführen zu können, wird sich der Ersteller dieser Bewertung bei Ihnen melden." />
+                        <Label
+                            Text="Wenn Sie beabsichtigen Ihre Immobilie zu verkaufen, wird Sie der Bewerter auch über den Energieausweis, die Immobilienertragssteuer, Ihre Rechtssicherheit und eventuellen wertsteigende Eigenschaften informieren."
+                            TextColor="Orange"/>
+                        <Label
+                            TextColor="{StaticResource ColorBlueMain}"
+                            Text="Wichtige Informationen zum Marktwert:"/>
+                        <Label
+                            Text="Diese Bewertung beruht auf den eingegebenen Daten des Users. Diese Daten wurden weder vom Immobilienmakler noch von Immowert4you geprüft. Dieses Objekt wurde nicht besichtigt. Weder der Immobilienmakler noch Immowert4you übernehmen eine Haftung für die Richtigkeit und Aussagekraftder übermittelten Daten." />
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>
+    </ContentView>
+</ContentPage>

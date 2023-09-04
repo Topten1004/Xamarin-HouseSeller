@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<bases:BaseContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:bases="clr-namespace:Immowert4You.Presentation.Common.Bases.Views"
+    x:Class="Immowert4You.Presentation.Properties.Views.Extras.PropertyExtraRoomsPage"
+    xmlns:extras="clr-namespace:Immowert4You.Presentation.Properties.Models.Create.Extras"
+    x:DataType="extras:PropertyExtraRoomsViewModel"
+    BackgroundColor="{StaticResource ColorBackground}"
+    Title="{Binding Header}">
+    <ContentView
+        ControlTemplate="{StaticResource DismissiblePage}">
+      <StackLayout>
+            <StackLayout>
+                <Frame
+                    IsVisible="{Binding IsFlat}"
+                    Style="{StaticResource frm1}">
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            Text="Balkon"
+                            HorizontalOptions="FillAndExpand"
+                            TextColor="{StaticResource ColorGray}"
+                            Style="{StaticResource entry_frm}" />
+                        <Switch 
+                            IsToggled="{Binding Property.HasBalcony}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    IsVisible="{Binding IsFlat}"
+                    Style="{StaticResource frm1}">
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            Text="Loggia"
+                            HorizontalOptions="FillAndExpand"
+                            TextColor="{StaticResource ColorGray}"
+                            Style="{StaticResource entry_frm}" />
+                        <Switch
+                            IsToggled="{Binding Property.HasLoggia}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    IsVisible="{Binding IsFlat}"
+                    Style="{StaticResource frm1}">
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            Text="Garten"
+                            HorizontalOptions="FillAndExpand"
+                            TextColor="{StaticResource ColorGray}"
+                            Style="{StaticResource entry_frm}" />
+                        <Switch
+                            IsToggled="{Binding Property.HasGarden}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    Style="{StaticResource frm1}">
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            Text="Garage"
+                            HorizontalOptions="FillAndExpand"
+                            TextColor="{StaticResource ColorGray}"
+                            Style="{StaticResource entry_frm}" />
+                        <Switch
+                            IsToggled="{Binding Property.HasGarage}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    IsVisible="{Binding IsFlat}"
+                    Style="{StaticResource frm1}">
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            Text="Autoabstellplatz"
+                            HorizontalOptions="FillAndExpand"
+                            TextColor="{StaticResource ColorGray}"
+                            Style="{StaticResource entry_frm}" />
+                        <Switch
+                            IsToggled="{Binding Property.HasParking}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    IsVisible="{Binding IsFlat}"
+                    Style="{StaticResource frm1}">
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            Text="Kellerabteil"
+                            HorizontalOptions="FillAndExpand"
+                            TextColor="{StaticResource ColorGray}"
+                            Style="{StaticResource entry_frm}" />
+                        <Switch 
+                            IsToggled="{Binding Property.HasBasementCloset}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    IsVisible="{Binding IsFlat, Converter={StaticResource InvertedBoolConverter}}"
+                    Style="{StaticResource frm1}">
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            Text="Carport"
+                            HorizontalOptions="FillAndExpand"
+                            TextColor="{StaticResource ColorGray}"
+                            Style="{StaticResource entry_frm}" />
+                        <Switch
+                            IsToggled="{Binding Property.HasCarport}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    IsVisible="{Binding IsFlat, Converter={StaticResource InvertedBoolConverter}}"
+                    Style="{StaticResource frm1}">
+                    <StackLayout
+                        Orientation="Horizontal"
+                        RadioButtonGroup.SelectedValue="{Binding Property.Floors}">
+                        <StackLayout
+                            HorizontalOptions="StartAndExpand">
+                            <Label
+                                Text="Stockwerke"
+                                HorizontalOptions="FillAndExpand"
+                                TextColor="{StaticResource ColorGray}"
+                                Style="{StaticResource entry_frm}"
+                                Margin="0,10,0,-8" />
+                            <Label
+                                Text="ohne Keller und Dachboden"
+                                FontSize="8"
+                                HorizontalOptions="FillAndExpand"
+                                TextColor="{StaticResource ColorGray}"
+                                Style="{StaticResource entry_frm}" />
+                        </StackLayout>
+                        <RadioButton
+                            Content="1"
+                            HorizontalOptions="End">
+                            <RadioButton.Value>
+                                <x:Int32>1</x:Int32>
+                            </RadioButton.Value>
+                        </RadioButton>
+                        <RadioButton
+                            Content="2"
+                            HorizontalOptions="End">
+                            <RadioButton.Value>
+                                <x:Int32>2</x:Int32>
+                            </RadioButton.Value>
+                        </RadioButton>
+                        <RadioButton
+                            Content="3"
+                            HorizontalOptions="End">
+                            <RadioButton.Value>
+                                <x:Int32>3</x:Int32>
+                            </RadioButton.Value>
+                        </RadioButton>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <Button
+                Style="{StaticResource bttnSmallBlue}"
+                Text="WEITER"
+                Margin="0,20"
+                VerticalOptions="EndAndExpand"
+                Command="{Binding NavigateToHouseCosts}" />
+        </StackLayout>
+  </ContentView>
+</bases:BaseContentPage>

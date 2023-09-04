@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<bases:BaseContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:bases="clr-namespace:Immowert4You.Presentation.Common.Bases.Views"
+             xmlns:components="clr-namespace:Immowert4You.Presentation.Common.Components"
+             x:Class="Immowert4You.Presentation.Properties.Views.Estimate.EstimatePropertyPage">
+    <ContentView
+        ControlTemplate="{StaticResource DismissiblePage}">
+        <ScrollView>
+            <StackLayout
+                Padding="20,0,20,20">
+                <Label 
+                    IsVisible="{Binding Property.IntentionToSell, Converter={StaticResource IntentionToSellToIsUrgentConverter}}"
+                    FontSize="16"
+                    TextDecorations="Underline"
+                    TextColor="{StaticResource ColorBlueMain}"
+                    Text="{Binding PhoneNumber}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding Call}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <StackLayout
+                    Orientation="Horizontal">
+                    <StackLayout>
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                Style="{StaticResource label_grey}"
+                                Text="{Binding Property.ZipCode}" />
+                            <Label
+                                Style="{StaticResource label_grey}"
+                                Text="{Binding Property.City}" />
+                        </StackLayout>
+                        <StackLayout
+                            Margin="0,-7,-5,0"
+                            Orientation="Horizontal">
+                            <Label
+                                Style="{StaticResource label_grey}"
+                                Text="{Binding Property.Address}" />
+                            <Label
+                                Style="{StaticResource label_grey}"
+                                Text="{Binding Property.HouseNumber}" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout
+                        HorizontalOptions="EndAndExpand">
+                        <Label
+                            Text="Verkaufsbereitschaft" />
+                        <Frame
+                            HorizontalOptions="Center"
+                            BackgroundColor="{StaticResource ColorBlueMain}"
+                            Padding="10">
+                            <Label
+                                TextColor="White"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{Binding Property.IntentionToSell}" />
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+                <CollectionView
+                    Margin="0,10,0,20"
+                    HeightRequest="200"
+                    ItemsSource="{Binding Property.Photos}"
+                    ItemsLayout="HorizontalGrid, 1"
+                    HorizontalOptions="FillAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout
+                                Padding="0,0,20,0"
+                                HeightRequest="200"
+                                WidthRequest="200">
+                                <Image
+                                    Aspect="AspectFill"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand"
+                                    Source="{Binding .}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <StackLayout>
+                    <Grid
+                        Margin="0,0,0,30">
+                        <StackLayout
+                            Grid.Column="0">
+                            <Label
+                                Text="Typ:" />
+                            <Label
+                                Text="Grundstücksgröße:" />
+                            <Label
+                                IsVisible="{Binding Property.IsNotParcel}"
+                                Text="Wohnfläche:" />
+                            <Label
+                                IsVisible="{Binding Property.IsNotParcel}"
+                                Text="Baujahr:" />
+                            <Label
+                                IsVisible="{Binding Property.IsNotParcel}"
+                                Text="Unterkellert:" />
+                            <Label
+                                IsVisible="{Binding Property.IsNotParcel}"
+                                Text="Stockwerk:" />
+                            <Label
+                                IsVisible="{Binding Property.IsNotParcel}"
+                                Text="Lift:" />
+                            <Label
+                                IsVisible="{Binding Property.IsNotParcel}"
+                                Text="Zimmeranzahl:" />
+                            <Label
+                                Text="Zustand:" />
+                            <Label
+                                IsVisible="{Binding Property.IsNotParcel}"
+                                Text="Besonderheiten Hierz:" />
+                            <Label
+                                Text="Extras:" />
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Column="1">
+                            <Label
+                                Text="{Binding Property.SubCategory}" />
+                            <Label
+                                IsVisible="{Binding Property.IsNotParcel}"
+                                Text="{Binding Property.Size, StringFormat='{0} m²'}" />
+                            <Label
+                                IsVisible="{Binding Property.IsNotParcel}"
+                                Text="{Binding Property.LivingSurface, StringFormat='{0} m²'}" />
+                            <Label
+                                IsVisible="{Binding Property.IsNotParcel}"
+                                Text="{Binding Property.YearOfBuilt}" />
+                            <Label
+                                IsVisible="{Binding Property.IsNotParcel}"
+                                Text="{Binding Property.HasBasement, Converter={StaticResource BooleanToYesNoConverter}}" />
+                            <Label
+                                IsVisible="{Binding Property.IsNotParcel}"
+                                Text="{Binding Property.Floor}" />
+                            <Label
+                                IsVisible="{Binding Property.IsNotParcel}"
+                                Text="{Binding Property.HasLift, Converter={StaticResource BooleanToYesNoConverter}}" />
+                            <Label
+                                IsVisible="{Binding Property.IsNotParcel}"
+                                Text="{Binding Property.Rooms}" />
+                            <Label
+                                Text="{Binding Property.ConditionRate, StringFormat='{0}/10'}" />
+                            <Label
+                                IsVisible="{Binding Property.IsNotParcel}"
+                                Text="{Binding Property.HeatingSystem}"/>
+                            <Label
+                                Text="{Binding Property.HeatingCosts, StringFormat='HWB Wert: {0} m²'}"
+                                IsVisible="{Binding Property.HeatingCosts, Converter={StaticResource InvertedIsNullOrEmptyStringToBoolConverter}}"/>
+                            <Label
+                                Text="{Binding Property.MonthlyCosts, StringFormat='Betriebskosten: {0:N2} €'}"
+                                IsVisible="{Binding Property.HasMonthlyCosts}"/>
+                            <Label
+                                Text="{Binding Property.Floors, StringFormat='Stockwerke: {0}'}"
+                                IsVisible="{Binding Property.HasFloors}"/>
+                            <Label
+                                Text="Balkon" IsVisible="{Binding Property.HasBalcony}" />
+                            <Label
+                                Text="Loggia" IsVisible="{Binding Property.HasLoggia}" />
+                            <Label
+                                Text="Garten" IsVisible="{Binding Property.HasGarden}" />
+                            <Label
+                                Text="Carport" IsVisible="{Binding Property.HasCarport}" />
+                            <Label
+                                Text="Garage" IsVisible="{Binding Property.HasGarage}" />
+                            <Label
+                                Text="Autoabstellplatz" IsVisible="{Binding Property.HasParking}" />
+                            <Label
+                                Text="Kellerabteil" IsVisible="{Binding Property.HasBasementCloset}" />
+                            <Label
+                                Text="Energieausweis" IsVisible="{Binding Property.HasEnergyCertificate}" />
+                            <Label
+                                Text="Förderung offen"  IsVisible="{Binding Property.IsOpenOffert}" />
+                        </StackLayout>
+                    </Grid>
+                    
+                </StackLayout>
+                <StackLayout
+                    IsVisible="{Binding Property.IsEstimated, Converter={StaticResource InvertedBoolConverter}}"
+                    HorizontalOptions="EndAndExpand">
+                    <Label
+                        Text="Verbleibende Zeit" />
+                    <Label
+                        Text="{Binding Property.DisplayedToBroker, Converter={StaticResource DiplayedDateTimeToRemainDateTimeConverter}, StringFormat='{0:hh\\:mm}'}" />
+                </StackLayout>
+                <StackLayout
+                    IsVisible="{Binding Property.IsEstimated, Converter={StaticResource InvertedBoolConverter}}"
+                    Margin="0,20">
+                    <Label
+                        Text="Indikativer Marktwert" />
+                    <Frame>
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                Text="€" />
+                            <components:CustomEntry
+                                Text="{Binding Price}"
+                                Keyboard="Numeric"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <StackLayout
+                    IsVisible="{Binding Property.IsEstimated, Converter={StaticResource InvertedBoolConverter}}">
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            Text="Zusätzliche Anmerkung:" />
+                        <Button
+                            HorizontalOptions="CenterAndExpand"
+                            Padding="10,0"
+                            Text="Standard-Anmerkung"
+                            Command="{Binding AddTemplateMessage}" />
+                    </StackLayout>
+                    <Editor
+                        HeightRequest="140" />
+                </StackLayout>
+                <StackLayout
+                    IsVisible="{Binding Property.IsEstimated}">
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            Text="Notiz:" />
+                    </StackLayout>
+                    <Editor
+                        Text="{Binding Note}"
+                        HeightRequest="140" />
+                </StackLayout>
+                <Button
+                    IsVisible="{Binding Property.IsEstimated, Converter={StaticResource InvertedBoolConverter}}"
+                    Text="Bewertung abschicken"
+                    Style="{StaticResource bttnSmallBlue}"
+                    Command="{Binding AddPropertyPrice}"/>
+                <Button
+                    IsVisible="{Binding Property.IsEstimated}"
+                    Text="Anmerkung aktualisierung"
+                    Style="{StaticResource bttnSmallBlue}"
+                    Command="{Binding UpdateNote}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentView>
+</bases:BaseContentPage>

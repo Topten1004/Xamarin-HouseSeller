@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<bases:BaseContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:bases="clr-namespace:Immowert4You.Presentation.Common.Bases.Views"
+    x:Class="Immowert4You.Presentation.Properties.Views.Create.PropertyAddressPage"
+    xmlns:components="clr-namespace:Immowert4You.Presentation.Common.Components"
+    BackgroundColor="{StaticResource ColorBackground}">
+    <ContentView
+        ControlTemplate="{StaticResource DismissiblePage}">
+        <ScrollView
+            Margin="0,-10,0,0">
+            <StackLayout>
+                <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
+                    <Image
+                        Source="thumb_up"
+                        HeightRequest="50" 
+                        Margin="0,10,0,0"/>
+                </StackLayout>
+                <StackLayout
+                    VerticalOptions="CenterAndExpand">
+                    <Label
+                        IsVisible="{Binding IsParcel}"
+                        Style="{StaticResource label_grey}"
+                        Margin="10,0"
+                        Text="Geben Sie bitte an, wie wahrscheinlich der Verkauf Ihres Grundstückes ist." />
+                    <Label
+                        IsVisible="{Binding IsParcel, Converter={StaticResource InvertedBoolConverter}}"
+                        Style="{StaticResource label_grey}"
+                        Margin="10,0"
+                        Text="Super, die wichtigsten Infos haben wir einmal. Genauere Daten können Sie später noch eingeben." />
+                </StackLayout>
+                <StackLayout>
+                    <StackLayout
+                        IsVisible="{Binding IsParcel, Converter={StaticResource InvertedBoolConverter}}"
+                        VerticalOptions="CenterAndExpand">
+                        <Label
+                            Margin="10,0"
+                            Style="{StaticResource label_grey}"
+                            Text="Wie wahrscheinlich ist der Verkauf Ihrer Immobilie?" />
+                    </StackLayout>
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            Style="{StaticResource label_big_blue}"
+                            Text="{Binding Source={x:Reference slider},
+                              Path=Value,
+                              StringFormat='{0:0}/10'}"
+                            HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <Slider
+                        x:Name="slider"
+                        Value="{Binding IntentionToSell}"
+                        Minimum="0"
+                        Maximum="10"
+                        MinimumTrackColor="{StaticResource ColorBlueMain}"
+                        MaximumTrackColor="Gray" />
+                    <StackLayout
+                        Orientation="Horizontal"
+                        Margin="0,0,0,20">
+                        <Label
+                            Style="{StaticResource label_big_blue}"
+                            FontSize="10"
+                            Text="GAR NICHT"
+                            HorizontalOptions="Start" />
+                        <Label
+                            HorizontalOptions="CenterAndExpand"
+                            Style="{StaticResource label_big_blue}"
+                            FontSize="10"
+                            Text="ÜBERLEGE NOCH"
+                            Margin="0,0,0,0" />
+                        <Label
+                            Style="{StaticResource label_big_blue}"
+                            FontSize="10"
+                            Text="SEHR WAHRSCHEINLICH" />
+                    </StackLayout>
+                </StackLayout>
+                
+                <Label
+                    Margin="10,10,10,15"
+                    Style="{StaticResource label_grey}"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="In welcher Region befindet sich Ihre Immobilie?" />
+                <StackLayout>
+                    <Grid
+                        ColumnDefinitions="*,2*"
+                        HorizontalOptions="FillAndExpand">
+                        <Frame
+                            Padding="12,-4"
+                            CornerRadius="30"
+                            HorizontalOptions="FillAndExpand">
+                            <components:CustomEntry
+                                FontSize="14"
+                                Text="{Binding PostCode.Value}"
+                                TextChanged="CustomEntry_TextChanged"
+                                Placeholder="PLZ"
+                                Style="{StaticResource entry_frm}" />
+                        </Frame>
+                        <Label
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Text="{Binding PostCode.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                            Style="{StaticResource ValidationErrorLabelStyle}"
+                            Margin="-10,-10,0,0" />
+                        <Frame
+                            Grid.Column="1"
+                            Padding="8,-4"
+                            CornerRadius="30"
+                            HorizontalOptions="FillAndExpand">
+                            <components:CustomEntry
+                                FontSize="14"
+                                Text="{Binding Location.Value}"
+                                Placeholder="ORT"
+                                Style="{StaticResource entry_frm}" />
+                        </Frame>
+                        <Label
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Text="{Binding Location.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                            Style="{StaticResource ValidationErrorLabelStyle}"
+                            Margin="0,-28,0,-6" />
+                    </Grid>
+                    <Grid
+                        ColumnDefinitions="2*,*"
+                        HorizontalOptions="FillAndExpand"
+                        Margin="0,0,0,20">
+                        <Frame
+                            Padding="12,-4"
+                            CornerRadius="30"
+                            HorizontalOptions="FillAndExpand">
+                            <components:CustomEntry
+                                FontSize="14"
+                                Text="{Binding Street.Value}"
+                                Placeholder="Straße"
+                                Style="{StaticResource entry_frm}" />
+                        </Frame>
+                        <Label
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Text="{Binding Street.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                            Style="{StaticResource ValidationErrorLabelStyle}"
+                            Margin="-10,-10,0,0" />
+                        <Frame
+                            Grid.Column="1"
+                            Padding="8,-4"
+                            CornerRadius="30"
+                            HorizontalOptions="FillAndExpand">
+                            <components:CustomEntry
+                                FontSize="14"
+                                Text="{Binding HouseNumber.Value}"
+                                Placeholder="Hausnr."                          
+                                Style="{StaticResource entry_frm}" />
+                        </Frame>
+                        <Label
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Text="{Binding HouseNumber.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                            Style="{StaticResource ValidationErrorLabelStyle}"
+                            Margin="-10,-10,0,0"/>
+                    </Grid>
+                    
+                </StackLayout>
+                <StackLayout
+                    Orientation="Horizontal">
+                    <CheckBox
+                        VerticalOptions="Start"
+                        IsChecked="{Binding IsCheckboxChecked}"
+                        Color="{Binding CheckBoxColor}"/>
+                    <StackLayout>
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Spacing="2">
+                            <Label
+                                Style="{StaticResource label_grey}"
+                                FontSize="10"
+                                Text="Ich stimme der" />
+                            <Label                                
+                                TextColor="{StaticResource ColorBlueMain}"
+                                TextDecorations="Underline"
+                                FontSize="12"
+                                Text="Datenschutzerklärung">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding NavigateToUserPolicy}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                Style="{StaticResource label_grey}"
+                                FontSize="10"
+                                Text="und den" />
+                            <Label
+                                TextColor="{StaticResource ColorBlueMain}"
+                                TextDecorations="Underline"
+                                FontSize="12"
+                                Text="Nutzungsbedingungen">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding NavigateToTerms}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                        <Label
+                            Style="{StaticResource label_grey}"
+                            FontSize="10"
+                            Text="zu. Insbesondere bin ich mit einer Kontaktaufnahme per Telefon oder Email durch den Bewerter einverstanden. Ein Rechtsanspruch auf Durchführung der Bewertung besteht nicht." />
+                    </StackLayout>
+                </StackLayout>
+                <Frame
+                    Margin="0,20,0,20"
+                    Style="{StaticResource frmBigBlue}">
+                    <StackLayout
+                        VerticalOptions="Center">
+                        <Button
+                            Style="{StaticResource bttnTrans}"
+                            Text="ABSCHICKEN"
+                            Command="{Binding NavigateToUserOptions}" />
+                        <Label
+                            TextColor="White"
+                            Style="{StaticResource label_white}"
+                            Text="Kostenlose Bewertung erhalten" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentView>
+</bases:BaseContentPage>
